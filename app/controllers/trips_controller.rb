@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
   
   def home 
-   end
+  
+  end
 
   def new
     @trip = Trip.new
