@@ -1,8 +1,9 @@
+
 # Triphop
 
 ## Description
 
-Add a short description of your app.
+group trip planning
 
 ## Screenshots
 
@@ -38,3 +39,7 @@ Link to your blog, twitter, etc!
 ## License
 
 Triphop is MIT Licensed. See LICENSE for details.
+=======
+# triphop
+
+
