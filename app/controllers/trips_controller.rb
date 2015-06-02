@@ -21,9 +21,15 @@ class TripsController < ApplicationController
   end
 
   def update
-    binding.pry
-    # @trip = Trip.find(params["id"])
-    # @trip.members << params["trip"]["members"]
+    @trip = Trip.find(params["id"])
+
+    if User.find_by(email: params["trip"]["members"])
+      @member = User.find_by(email: params["trip"]["members"])
+      @trip.members << @member
+      @trip.save
+    else #user needs to sign up
+
+    end
   end
 
 private
