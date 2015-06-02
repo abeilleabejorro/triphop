@@ -10,6 +10,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.create(trip_params)
+    @trip.admin = current_user
     render nothing: true
   end 
 
