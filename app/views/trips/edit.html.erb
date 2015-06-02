@@ -1,0 +1,18 @@
+<div class="container">
+  <h1><%= current_user.email %></h1>
+  <h4><%= @trip.name %></h4>
+  <h4><%= @trip.description %></h4>
+  <h4><%= @trip.origin %></h4>
+  <h4><%= @trip.destination %></h4>
+</div>
+
+<div class="container">
+  <%= form_for @trip do |f| %>
+    <%= f.label :members %>:
+    <%= f.email_field :members, value: "" %><br />
+
+    <%= f.submit %>
+  <% end %>
+</div>
+
+
