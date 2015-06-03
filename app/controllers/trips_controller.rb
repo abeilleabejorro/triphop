@@ -14,6 +14,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.create(trip_params)
+    User.invite!(:email => "najjar.dana@gmail.com", :name => "John Doe")
     @trip.admin = current_user
     @trip.save
     # redirect_to "/trips/"+@trip.id+"/edit"
