@@ -15,7 +15,8 @@ Devise.setup do |config|
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  # config.mailer = 'Devise::MyMailer'
+  config.mailer = 'MyMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -101,6 +102,45 @@ Devise.setup do |config|
   # Setup a pepper to generate the encrypted password.
   # config.pepper = '2b239664e9fa2a35a320905865ca5c1a414a17833ee9aa27e72c32c02ca6477f1356285ef31f30d0be9df0213a616e472ddf6e3e5cda99f6974fef871417401f'
 
+  # ==> Configuration for :invitable
+  # The period the generated invitation token is valid, after
+  # this period, the invited resource won't be able to accept the invitation.
+  # When invite_for is 0 (the default), the invitation won't expire.
+  # config.invite_for = 2.weeks
+
+  # Number of invitations users can send.
+  # - If invitation_limit is nil, there is no limit for invitations, users can
+  # send unlimited invitations, invitation_limit column is not used.
+  # - If invitation_limit is 0, users can't send invitations by default.
+  # - If invitation_limit n > 0, users can send n invitations.
+  # You can change invitation_limit column for some users so they can send more
+  # or less invitations, even with global invitation_limit = 0
+  # Default: nil
+  # config.invitation_limit = 5
+
+  # The key to be used to check existing users when sending an invitation
+  # and the regexp used to test it when validate_on_invite is not set.
+  config.invite_key = {:email => /\A[^@]+@[^@]+\z/}
+  config.invite_key = {:email => /\A[^@]+@[^@]+\z/, :username => nil}
+
+  # Flag that force a record to be valid before being actually invited
+  # Default: false
+  config.validate_on_invite = true
+
+  # Resend invitation if user with invited status is invited again
+  # Default: true
+  # config.resend_invitation = false
+
+  # The class name of the inviting model. If this is nil,
+  # the #invited_by association is declared to be polymorphic.
+  # Default: nil
+  # config.invited_by_class_name = 'User'
+
+  # The column name used for counter_cache column. If this is nil,
+  # the #invited_by association is declared without counter_cache.
+  # Default: nil
+  # config.invited_by_counter_cache = :invitations_count
+
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
   # confirming their account. For instance, if set to 2.days, the user will be
@@ -124,7 +164,7 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  # config.confirmation_keys = [:email]
+  config.confirmation_keys = [:email]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
@@ -147,7 +187,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -186,12 +226,12 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  # config.reset_password_keys = [:email]
+  config.reset_password_keys = [:email]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-  config.reset_password_within = 6.hours
+  config.reset_password_within = 12.hours
 
   # When set to false, does not sign a user in automatically after their password is
   # reset. Defaults to true, so a user is signed in automatically after a reset.
