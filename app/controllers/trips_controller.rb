@@ -26,9 +26,10 @@ class TripsController < ApplicationController
     if User.find_by(email: params["trip"]["members"])
       @member = User.find_by(email: params["trip"]["members"])
       @trip.members << @member
-      binding.pry
       @trip.save
+      binding.pry
     else #user needs to sign up
+      binding.pry
       user = User.new(email: params["trip"]["members"])
       user.invite!
     end
