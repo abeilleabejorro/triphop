@@ -4,9 +4,9 @@ class MyMailer < Devise::Mailer
   default template_path: 'devise/mailer' # to make sure that your mailer uses the devise views
   default from: "triphophq@gmail.com"
   def add_member(user, trip)
-    @trip = trip 
+    @trip = trip
     @email = user.email
-    mail(to: "najjar.dana@gmail.com", subject: "test")
+    mail(to: @email, subject: "test")
   end
 
 end

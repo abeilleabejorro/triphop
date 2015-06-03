@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-before_action :require_login, only: [:show]
+before_action :require_login, only: [:show, :edit, :update]
 
   def home
 
@@ -7,7 +7,7 @@ before_action :require_login, only: [:show]
 
   def show
     binding.pry
-  end 
+  end
 
   def index
     render nothing: true
@@ -46,7 +46,7 @@ before_action :require_login, only: [:show]
   end
 
 private
-  
+
     def require_login
     unless signed_in?
       flash[:error] = "You must be logged in to access this section"

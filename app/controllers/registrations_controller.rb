@@ -1,12 +1,23 @@
 class RegistrationsController < Devise::RegistrationsController
+  after_action
 
   def new
-  #log in
-    if session["path"]  
+    binding.pry
+    @user = User.new
+  end
+
+  def create
+    #log in
+    @user = User.create(sign_up_params)
+
+    if session["path"]
       #associate them to the group
-      redirect_to 
-    end 
-  end 
+      @trip = Trip.find(session["path"].split("/")[2].to_i)
+      @trip.members << @user
+      @user.trips << @trip
+      redirect_to session["path"]
+    end
+  end
 
   private
 
