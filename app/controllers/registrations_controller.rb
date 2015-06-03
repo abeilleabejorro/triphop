@@ -1,5 +1,13 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def new
+  #log in
+    if session["path"]  
+      #associate them to the group
+      redirect_to 
+    end 
+  end 
+
   private
 
   def sign_up_params

@@ -1,8 +1,18 @@
 class TripsController < ApplicationController
+before_action :require_login, only: [:show]
 
   def home
 
   end
+
+  def show
+    binding.pry
+  end 
+
+  def index
+    render nothing: true
+  end
+
 
   def new
     @trip = Trip.new
@@ -20,15 +30,13 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params["id"])
-
     if User.find_by(email: params["trip"]["members"])
       @member = User.find_by(email: params["trip"]["members"])
-      binding.pry
     else #user needs to sign up
-      binding.pry
-      user = User.new(email: params["trip"]["members"])
-      user.invite!
+      @member = User.new(email: params["trip"]["members"])
+      MyMailer.add_member(@member, @trip).deliver_now
     end
+    render nothing: true
   end
 
   def all
@@ -38,6 +46,16 @@ class TripsController < ApplicationController
   end
 
 private
+  
+    def require_login
+    unless signed_in?
+      flash[:error] = "You must be logged in to access this section"
+      session["path"]=request.path
+      redirect_to new_user_registration_path #If the user doesn't exist
+      #else take them to login and redirect to "do you want to join group?"
+    end
+  end
+
   def trip_params
     params.require(:trip).permit(:name, :description, :origin, :destination)
   end
