@@ -3,14 +3,14 @@ class RegistrationsController < Devise::RegistrationsController
 
   # def create
   # #log in
-  #   if session["path"]  
+  #   if session["path"]
   #     #associate them to the group
   #     redirect_to show
-  #   end 
-  # end 
+  #   end
+  # end
 
   def new
-    
+
     build_resource({})
     set_minimum_password_length
     yield resource if block_given?
@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
     if params["id"]
       binding.pry
       session['path']="/trips/#{params["id"]}"
-    end 
+    end
     #if they show up with trip id in params, session['path']=path
     # @user = User.new
   end
@@ -28,6 +28,7 @@ class RegistrationsController < Devise::RegistrationsController
     #log in
 
     @user = User.create(sign_up_params)
+    sign_in(@user)
 
     if session['path']
       binding.pry
