@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.create(sign_up_params)
 
     if session["path"]
-r      @trip = Trip.find(session["path"].split("/")[2].to_i)
+     @trip = Trip.find(session["path"].split("/")[2].to_i)
       @trip.members << @user
       @user.trips << @trip
       redirect_to session["path"]

@@ -1,11 +1,12 @@
 class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update]
-
+# before_action :check_membership, only: [:show, :edit, :update]
   def home
 
   end
 
   def show
+    @trip = Trip.find(params[:id])
   end
 
   def index
@@ -37,6 +38,9 @@ before_action :require_login, only: [:show, :edit, :update]
     else #user needs to sign up
       @member = User.new(email: params["trip"]["members"])
     end
+        binding.pry
+    @trip.invited << @member.email
+
 
     render nothing: true
   end
