@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150604200103) do
     t.datetime "updated_at", null: false
   end
 
+
   create_table "trips", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -28,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150604200103) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "admin_id"
-    t.text     "invited",     default: "--- []\n"
+    t.text     "invited"
   end
 
   create_table "trips_users", force: :cascade do |t|
