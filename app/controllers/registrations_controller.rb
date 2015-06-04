@@ -24,7 +24,8 @@ class RegistrationsController < Devise::RegistrationsController
       @user.trips << @trip
       redirect_to session["path"]
     else
-      render '/trips/new'
+      # render '/trips/new'
+      render nothing: true
     end
 
   end
