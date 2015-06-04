@@ -2,7 +2,6 @@ class RegistrationsController < Devise::RegistrationsController
   after_action
 
   def new
-    binding.pry
     @user = User.new
   end
 
@@ -16,7 +15,10 @@ class RegistrationsController < Devise::RegistrationsController
       @trip.members << @user
       @user.trips << @trip
       redirect_to session["path"]
+    else
+      render '/trips/new'
     end
+
   end
 
   private
