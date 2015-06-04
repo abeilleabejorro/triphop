@@ -1,13 +1,12 @@
 class TripsController < ApplicationController
-before_action :require_login, only: [:show]
+before_action :require_login, only: [:show, :edit, :update]
 
   def home
 
   end
 
   def show
-    binding.pry
-  end 
+  end
 
   def index
     render nothing: true
@@ -29,14 +28,16 @@ before_action :require_login, only: [:show]
   end
 
   def update
+    binding.pry
     @trip = Trip.find(params["id"])
     if User.find_by(email: params["trip"]["members"])
       @member = User.find_by(email: params["trip"]["members"])
       session["member"]=@member
     else #user needs to sign up
       @member = User.new(email: params["trip"]["members"])
-      MyMailer.add_member(@member, @trip).deliver_now
     end
+    MyMailer.add_member(@member, @trip).deliver_now
+
     render nothing: true
   end
 
@@ -47,13 +48,14 @@ before_action :require_login, only: [:show]
   end
 
 private
-  
+
     def require_login
       if sessions[member]=sdf
         redirect_to sign in take them to 
     unless signed_in?
       flash[:error] = "You must be logged in to access this section"
       session["path"]=request.path
+      binding.pry
       redirect_to new_user_registration_path #If the user doesn't exist
       #else take them to login and redirect to "do you want to join group?"
     end
