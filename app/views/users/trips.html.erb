@@ -1,0 +1,10 @@
+<div class="container">
+  <ul>
+    <% @trips.each do |trip| %>
+      <h2><li><%= link_to trip.name, edit_trip_path(trip) %></li></h2>
+      <li><%= trip.description %></li>
+      <li><%= trip.origin %></li>
+      <li><%= trip.destination %></li>
+    <% end %>
+  </ul>
+</div>

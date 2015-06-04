@@ -1,0 +1,2 @@
+class ProposedDatesController < ApplicationController
+end
