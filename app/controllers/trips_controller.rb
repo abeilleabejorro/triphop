@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update]
-# before_action :check_membership, only: [:show, :edit, :update]
+before_action :check_if_invited only: [:show]
+before_action :check_membership, only: [:show, :edit, :update]
   def home
 
   end
@@ -64,6 +65,11 @@ private
       #else take them to login and redirect to "do you want to join group?"
     end
   end
+
+    def check_membership
+
+
+    end 
 
   def trip_params
     params.require(:trip).permit(:name, :description, :origin, :destination)
