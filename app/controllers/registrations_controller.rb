@@ -1,10 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  def new
+  def create
   #log in
     if session["path"]  
       #associate them to the group
-      redirect_to 
+      redirect_to show
     end 
   end 
 

@@ -6,7 +6,7 @@ class MyMailer < Devise::Mailer
   def add_member(user, trip)
     @trip = trip 
     @email = user.email
-    mail(to: "najjar.dana@gmail.com", subject: "test")
+    mail(to: @email, subject: "test")
   end
 
 end
