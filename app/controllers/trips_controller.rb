@@ -50,12 +50,10 @@ before_action :require_login, only: [:show, :edit, :update]
 private
 
     def require_login
-      if sessions[member]=sdf
-        redirect_to sign in take them to 
+      
     unless signed_in?
       flash[:error] = "You must be logged in to access this section"
       session["path"]=request.path
-      binding.pry
       redirect_to new_user_registration_path #If the user doesn't exist
       #else take them to login and redirect to "do you want to join group?"
     end
