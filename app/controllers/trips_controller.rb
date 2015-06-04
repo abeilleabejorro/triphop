@@ -6,6 +6,7 @@ before_action :require_login, only: [:show, :edit, :update]
   end
 
   def show
+    @trip = Trip.find(params[:id])
   end
 
   def index
@@ -36,8 +37,9 @@ before_action :require_login, only: [:show, :edit, :update]
       MyMailer.add_existing_member(@member, @trip).deliver_now
     else #user needs to sign up
       @member = User.new(email: params["trip"]["members"])
+      MyMailer.add_new_member(@member, @trip).deliver_now
     end
-
+     # add @member's email to invited array
     render nothing: true
   end
 
@@ -50,15 +52,15 @@ before_action :require_login, only: [:show, :edit, :update]
 private
 
     def require_login
-      
+    # trips/11/
     unless signed_in?
       #if you're not signed in, check if user is a member (in database)
       # binding.pry
       flash[:error] = "You must be logged in to access this section"
       session["path"]=request.path
-      redirect_to new_user_registration_path #If the user doesn't exist
-      #else take them to login and redirect to "do you want to join group?"
+      redirect_to new_user_session_path
     end
+    # add current_user to trip from session path
   end
 
   def trip_params

@@ -1,33 +1,47 @@
 class RegistrationsController < Devise::RegistrationsController
   after_action
 
-  def create
-  #log in
-    if session["path"]  
-      #associate them to the group
-      redirect_to show
-    end 
-  end 
+  # def create
+  # #log in
+  #   if session["path"]  
+  #     #associate them to the group
+  #     redirect_to show
+  #   end 
+  # end 
 
   def new
-    @user = User.new
+    
+    build_resource({})
+    set_minimum_password_length
+    yield resource if block_given?
+    respond_with self.resource
+
+    if params["id"]
+      binding.pry
+      session['path']="/trips/#{params["id"]}"
+    end 
+    #if they show up with trip id in params, session['path']=path
+    # @user = User.new
   end
 
   def create
     #log in
+
     @user = User.create(sign_up_params)
 
-    if session["path"]
-      #associate them to the group
-      @trip = Trip.find(session["path"].split("/")[2].to_i)
-      @trip.members << @user
-      @user.trips << @trip
+    if session['path']
+      binding.pry
+      # send them to the trip page
+
+
+      # @trip = Trip.find(session["path"].split("/")[2].to_i)
+      # @trip.members << @user
+      # @user.trips << @trip
       redirect_to session["path"]
     else
-      # render '/trips/new'
-      render nothing: true
+     redirect_to root_path
     end
-
+    # render nothing: true
   end
 
   private
