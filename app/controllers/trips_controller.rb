@@ -24,6 +24,7 @@ before_action :require_login, only: [:show, :edit, :update]
 
   def create
     @trip = Trip.create(trip_params)
+    @trip.update(invited: "" )
     @trip.update(admin: current_user)
     redirect_to edit_trip_path(@trip)
   end
@@ -38,10 +39,9 @@ before_action :require_login, only: [:show, :edit, :update]
     else #user needs to sign up
       @member = User.new(email: params["trip"]["members"])
     end
-        binding.pry
-    @trip.invited << @member.email
-
-
+    binding.pry
+    @trip.invited << "#{@member.email}, "
+    @trip.invited?
     render nothing: true
   end
 

@@ -9,11 +9,10 @@ class RegistrationsController < Devise::RegistrationsController
   def create
 
     @user = User.create(sign_up_params)
-
     if session["path"]
-     @trip = Trip.find(session["path"].split("/")[2].to_i)
-      @trip.members << @user
-      @user.trips << @trip
+     # @trip = Trip.find(session["path"].split("/")[2].to_i)
+     #  @trip.members << @user
+     #  @user.trips << @trip
       redirect_to session["path"]
     else
       # render '/trips/new'
