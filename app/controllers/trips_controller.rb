@@ -25,6 +25,7 @@ before_action :require_login, only: [:show, :edit, :update]
   def create
     @trip = Trip.create(trip_params)
     @trip.update(admin: current_user)
+    current_user.trips << @trip
     redirect_to edit_trip_path(@trip)
   end
 
