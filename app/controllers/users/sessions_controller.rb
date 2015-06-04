@@ -1,6 +1,15 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
 
+  # def create
+  #   render nothing: true
+  # end
+
+  # def new
+  #   @user = User.new
+  #   binding.pry
+  # end
+
   # GET /resource/sign_in
   # def new
   #   super

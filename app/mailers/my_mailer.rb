@@ -3,10 +3,16 @@ class MyMailer < Devise::Mailer
   include Devise::Controllers::UrlHelpers # Optional. eg. `confirmation_url`
   default template_path: 'devise/mailer' # to make sure that your mailer uses the devise views
   default from: "triphophq@gmail.com"
-  def add_member(user, trip)
+  def add_new_member(user, trip)
     @trip = trip
     @email = user.email
     mail(to: @email, subject: "test")
+  end
+
+  def add_existing_member(user, trip)
+    @trip = trip
+    @email = user.email
+    mail(to: @email, subject: "Hello")
   end
 
 end
