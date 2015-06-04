@@ -1,15 +1,17 @@
+<section>
+	<div class="container">
+		<h1><%= @trip.name %></h1>
+		<h2>Edit Your Trip</h2>
+
+
 <div class="container">
-  <h1><%= @trip.name %></h1>
-  <h2><%= @trip.description %></h2>
-  <h4><%= @trip.origin %></h4>
-  <h4><%= @trip.destination %></h4>
+ 	<%= render 'form' %>
 </div>
 
 <div class="container">
   <%= form_for @trip do |f| %>
     <%= f.label :members %>:
     <%= f.email_field :members, value: "" %><br />
-
     <%= f.submit %>
   <% end %>
 </div>
