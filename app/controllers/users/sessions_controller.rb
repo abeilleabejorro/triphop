@@ -8,6 +8,11 @@ class Users::SessionsController < Devise::SessionsController
     yield resource if block_given?
     
     if session['path']
+      @trip = Trip.find(session["path"].split("/")[2].to_i)
+      #to do: check to make sure they're not already a member
+      @trip.members << current_user
+      @trip.save
+      current_user.save
       redirect_to session['path']
     else 
     respond_with resource, location: after_sign_in_path_for(resource)
