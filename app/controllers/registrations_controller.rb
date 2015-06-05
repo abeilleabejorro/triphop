@@ -10,6 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     if params["id"]
       binding.pry
+      @trip = Trip.find(params["id"].to_i)
       session['path']="/trips/#{params["id"]}"
     end
     #if they show up with trip id in params, session['path']=path
@@ -17,25 +18,14 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-
-
     @user = User.create(sign_up_params)
     sign_in(@user)
-
-    if session['path']
-      binding.pry
-      # send them to the trip page
-
-
-      # @trip = Trip.find(session["path"].split("/")[2].to_i)
-      # @trip.members << @user
-      # @user.trips << @trip
-
-    @user = User.create(sign_up_params)
+    
     if session["path"]
-     # @trip = Trip.find(session["path"].split("/")[2].to_i)
-     #  @trip.members << @user
-     #  @user.trips << @trip
+      @trip = Trip.find(session["path"].split("/")[2].to_i)
+      @trip.members.push(@user) 
+      @trip.save
+      @user.save
       redirect_to session["path"]
     else
      redirect_to root_path
@@ -52,4 +42,5 @@ class RegistrationsController < Devise::RegistrationsController
   def account_update_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
   end
-end
+end 
+
