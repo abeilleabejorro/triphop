@@ -1,0 +1,2 @@
+class AccomodationsController < ApplicationController
+end

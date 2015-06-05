@@ -12,6 +12,15 @@
   <li><%= f.label :destination %>:</li>
   <li><%= f.text_field :destination %></li>
 
-  <li><%= f.submit  class: 'btn btn-primary' %></li>
+<!-- DATES -->
+<%= fields_for :proposed_dates do |proposed_dates_form| %>
+    <li><%= proposed_dates_form.label :start %></li>
+    <li><%= proposed_dates_form.text_field :start, placeholder: "YYYY/MM/DD" %></li>
+    <li><%= proposed_dates_form.label :end %></li>
+    <li><%= proposed_dates_form.text_field :end, placeholder: "YYYY/MM/DD" %></li>
+<% end %>
+
+
+	<li><%= f.submit  class: 'btn btn-primary' %></li>
 <% end %>
 </ul>

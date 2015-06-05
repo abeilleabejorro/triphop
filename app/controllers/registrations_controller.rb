@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     respond_with self.resource
 
     if params["id"]
-      binding.pry
+      # binding.pry
       @trip = Trip.find(params["id"].to_i)
       session['path']="/trips/#{params["id"]}"
     end

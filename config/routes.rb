@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :accomodations
+
+  resources :transportations
+
   resources :proposed_dates
 
   devise_for :users, :controllers => { registrations: 'registrations', sessions: 'users/sessions'}

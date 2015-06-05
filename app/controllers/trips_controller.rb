@@ -22,16 +22,25 @@ before_action :require_login, only: [:show, :edit, :update]
 
   def edit
     @trip = Trip.find(params["id"])
-     binding.pry
+     # binding.pry
   end
 
   def create
+    
     @trip = Trip.create(trip_params)
     @trip.update(invited: "" )
     @trip.update(admin: current_user)
     current_user.trips << @trip
+    
+    # relate and save proposed_dates
+    @dates = ProposedDate.create(date_params)
+    @dates.update(trip_id:  @trip.id)
+    @trip.update(start_date: @dates.start)
+    @trip.update(end_date: @dates.end)
+    @trip.save
+    # binding.pry
     redirect_to edit_trip_path(@trip)
-    binding.pry
+    # binding.pry
   end
 
   def update
@@ -72,6 +81,10 @@ private
   
   def trip_params
     params.require(:trip).permit(:name, :description, :origin, :destination)
+  end
+
+  def date_params
+    params.require(:proposed_dates).permit(:start, :end)
   end
 
 end 

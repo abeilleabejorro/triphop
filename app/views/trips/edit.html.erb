@@ -1,19 +1,48 @@
 <section>
 	<div class="container">
 		<h1><%= @trip.name %></h1>
-		<h2>Edit Your Trip</h2>
-
-
-<div class="container">
- 	<%= render 'form' %>
+		<h2>Plan your trip!</h2>
 </div>
+</section>
 
-<div class="container">
+<ul style="list-style: none;">
+	<li><%= @trip.origin %> to</li>
+	<li><%= @trip.destination %></li>
+	<li><%= @trip.proposed_date.start %></li>
+	<li><%= @trip.proposed_date.end %></li>
+</ul>
+
+<div class="container panel">
   <%= form_for @trip do |f| %>
     <%= f.label :members %>:
     <%= f.email_field :members, value: "" %><br />
+     <%= f.email_field :members, value: "" %><br />
+      <%= f.email_field :members, value: "" %><br />
     <%= f.submit %>
   <% end %>
 </div>
 
+<section id="map" class="panel">
+	<canvas>Waiting for google map...Please be patient!</canvas>
+</section>
+
+<section id="transportation" class="panel">
+<h2>How are we going?</h2>
+<ul>
+	<li><a href="">Car Rental</a></li>
+	<li><a href="">Bus</a></li>
+	<li><a href="">Train</a></li>
+	<li><a href="">Other</a></li>
+</ul>
+</section>
+
+<section id="accomodations" class="panel">
+	<h2>Where are we staying?</h2>
+	<ul>
+		<li><a href="">Best Option</a></li>
+		<li><a href="">Option</a></li>
+		<li><a href="">Option</a></li>
+		<li><a href="">Other</a></li>
+	</ul>
+</section>
 
