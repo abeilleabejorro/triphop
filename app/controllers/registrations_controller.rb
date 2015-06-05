@@ -1,14 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   after_action
 
-  # def create
-  # #log in
-  #   if session["path"]
-  #     #associate them to the group
-  #     redirect_to show
-  #   end
-  # end
-
   def new
 
     build_resource({})
@@ -25,7 +17,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    #log in
+
 
     @user = User.create(sign_up_params)
     sign_in(@user)
@@ -38,6 +30,12 @@ class RegistrationsController < Devise::RegistrationsController
       # @trip = Trip.find(session["path"].split("/")[2].to_i)
       # @trip.members << @user
       # @user.trips << @trip
+
+    @user = User.create(sign_up_params)
+    if session["path"]
+     # @trip = Trip.find(session["path"].split("/")[2].to_i)
+     #  @trip.members << @user
+     #  @user.trips << @trip
       redirect_to session["path"]
     else
      redirect_to root_path

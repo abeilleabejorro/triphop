@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update]
-
+before_action :check_if_invited only: [:show]
+before_action :check_membership, only: [:show, :edit, :update]
   def home
 
   end
@@ -24,6 +25,7 @@ before_action :require_login, only: [:show, :edit, :update]
 
   def create
     @trip = Trip.create(trip_params)
+    @trip.update(invited: "" )
     @trip.update(admin: current_user)
     current_user.trips << @trip
     redirect_to edit_trip_path(@trip)
@@ -63,6 +65,11 @@ private
     end
     # add current_user to trip from session path
   end
+
+    def check_membership
+
+
+    end 
 
   def trip_params
     params.require(:trip).permit(:name, :description, :origin, :destination)
