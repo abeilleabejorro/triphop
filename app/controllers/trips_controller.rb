@@ -1,12 +1,13 @@
 class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update]
-before_action :check_if_invited only: [:show]
-before_action :check_membership, only: [:show, :edit, :update]
+# before_action :check_if_invited only: [:show]
+# before_action :check_membership, only: [:show, :edit, :update]
   def home
 
   end
 
   def show
+
     @trip = Trip.find(params[:id])
   end
 
@@ -21,6 +22,7 @@ before_action :check_membership, only: [:show, :edit, :update]
 
   def edit
     @trip = Trip.find(params["id"])
+     binding.pry
   end
 
   def create
@@ -29,6 +31,7 @@ before_action :check_membership, only: [:show, :edit, :update]
     @trip.update(admin: current_user)
     current_user.trips << @trip
     redirect_to edit_trip_path(@trip)
+    binding.pry
   end
 
   def update
@@ -56,24 +59,21 @@ private
 
     def require_login
     # trips/11/
-    unless signed_in?
-      #if you're not signed in, check if user is a member (in database)
-      # binding.pry
-      flash[:error] = "You must be logged in to access this section"
-      session["path"]=request.path
-      redirect_to new_user_session_path
-    end
+      unless signed_in?
+        #if you're not signed in, check if user is a member (in database)
+        # binding.pry
+        flash[:error] = "You must be logged in to access this section"
+        session["path"]=request.path
+        redirect_to new_user_session_path
+      end
     # add current_user to trip from session path
-  end
+    end
 
-    def check_membership
-
-
-    end 
-
+  
   def trip_params
     params.require(:trip).permit(:name, :description, :origin, :destination)
   end
-end
+
+end 
 
 
