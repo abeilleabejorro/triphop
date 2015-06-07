@@ -1,10 +1,33 @@
-<div class="container">
-  <ul>
-    <% @trips.each do |trip| %>
-      <h2><li><%= link_to trip.name, edit_trip_path(trip) %></li></h2>
-      <li><%= trip.description %></li>
-      <li><%= trip.origin %></li>
-      <li><%= trip.destination %></li>
-    <% end %>
-  </ul>
-</div>
+<section class="myTrips">
+<!-- BACKGROUND IMAGE -->
+  <div class="bg-img">
+    <div class="bg-filter">
+    	<%= image_tag "yellow.jpg", :alt => "My Trips", :data => { :bgposition => "center bottom", :bgfit => "cover", :bgrepeat => "no-repeat"} %>    
+    </div>
+  </div>
+  <!--/BACKGROUND IMAGE -->
+
+  <!--MY TRIPS -->
+  <div class="section-xlg container">
+    <h2 class="lg-title">My Trips</h2>
+    <div class="space-md"></div>
+    <div id="teamSlider" class="owl-carousel">
+			<% @trips.each do |trip| %>
+				<div class="item">
+          <div class="profile-circle fadeIn wow" data-wow-delay="0.2s">
+          	<div class="pic-container">
+          		<%= image_tag "pics/boston.jpg", :alt => "Boston" %> 
+          	</div>
+            <h3><%= link_to trip.name, edit_trip_path(trip) %></h3>
+            <h4><%= trip.origin %> - <%= trip.destination %></h4>
+            <p class="text-block"><%= trip.description %></p>
+          </div><!--profile-circle -->
+        </div><!-- item -->
+      <% end %>
+  	</div><!--teamSlider -->
+      
+</div><!--section-xlg -->
+</section>
+
+
+    
