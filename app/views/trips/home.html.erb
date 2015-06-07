@@ -2,6 +2,17 @@
 
 <h1>tripHop</h1>
 
-<h2><%= link_to "create a new trip", new_trip_path, class: 'btn btn-primary' %></h2>
+<h2><%= link_to "create a new trip", new_trip_path, class: 'btn btn-primary new-trip' %></h2>
 
 </section>
+
+<% unless signed_in? %>
+  <script>
+    $('.new-trip').click(function(e){
+      e.preventDefault();
+      $('.navbar-link').click();
+      confirm('You have to be signed in');
+      $(':submit').click();
+    })
+  </script>
+<% end %>
