@@ -1127,7 +1127,7 @@ img.tp-slider-alternative-image {
 
 .tp-simpleresponsive .caption, .tp-simpleresponsive .tp-caption {
     /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";     -moz-opacity: 0;    -khtml-opacity: 0;  opacity: 0; */
-    
+
     position: absolute;
     visibility: hidden;
     -webkit-font-smoothing: antialiased !important;
@@ -1711,7 +1711,7 @@ img.tp-slider-alternative-image {
     width: 500px;
     height: 50px;
     /* THE DIMENSIONS OF THE THUMB CONTAINER */
-    
+
     margin-top: -50px;
 }
 .fullwidthbanner-container .tp-thumbs {
@@ -1721,7 +1721,7 @@ img.tp-slider-alternative-image {
     width: 500px;
     height: 50px;
     /* THE DIMENSIONS OF THE THUMB CONTAINER */
-    
+
     overflow: hidden;
     position: relative
 }
@@ -1733,7 +1733,7 @@ img.tp-slider-alternative-image {
     width: 100px;
     height: 50px;
     /* THE DIMENSION OF A SINGLE THUMB */
-    
+
     cursor: pointer;
     overflow: hidden;
     background: none;
@@ -1741,7 +1741,7 @@ img.tp-slider-alternative-image {
     float: left;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     /*filter: alpha(opacity=50);    */
-    
+
     -moz-opacity: 0.5;
     -khtml-opacity: 0.5;
     opacity: 0.5;
@@ -2712,7 +2712,7 @@ img.tp-slider-alternative-image {
     -webkit-animation: tp-bouncedelay 1.4s infinite ease-in-out;
     animation: tp-bouncedelay 1.4s infinite ease-in-out;
     /* Prevent first frame from flickering when animation starts */
-    
+
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
@@ -2808,7 +2808,7 @@ img.tp-slider-alternative-image {
 .tp-caption img {
     background: transparent;
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)";
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF, endColorstr=#00FFFFFF);
+    /*filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF, endColorstr=#00FFFFFF);*/
     zoom: 1;
 }
 @font-face {
@@ -2841,15 +2841,15 @@ img.tp-slider-alternative-image {
     text-align: center;
     /* opacity: .8; */
     /* For safety - reset parent styles, that can break glyph codes*/
-    
+
     font-variant: normal;
     text-transform: none;
     /* fix buttons height, for twitter bootstrap */
-    
+
     line-height: 1em;
     /* Animation center compensation - margins should be symmetric */
     /* remove if not needed */
-    
+
     margin-left: .2em;
     /* you can be more comfortable with increased icons size */
     /* font-size: 120%; */
