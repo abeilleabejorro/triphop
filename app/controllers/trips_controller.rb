@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update]
+skip_before_filter :verify_authenticity_token
 # before_action :check_if_invited only: [:show]
 # before_action :check_membership, only: [:show, :edit, :update]
   def home
@@ -26,7 +27,6 @@ before_action :require_login, only: [:show, :edit, :update]
   end
 
   def create
-    binding.pry
     @trip = Trip.create(trip_params)
     @trip.update(invited: "" )
     @trip.update(admin: current_user)
@@ -38,13 +38,11 @@ before_action :require_login, only: [:show, :edit, :update]
     @trip.update(start_date: @dates.start)
     @trip.update(end_date: @dates.end)
     @trip.save
-    # binding.pry
     redirect_to edit_trip_path(@trip)
-    # binding.pry
   end
 
   def update
-    # binding.pry
+    binding.pry
     @trip = Trip.find(params["id"])
     if User.find_by(email: params["trip"]["members"])
       @member = User.find_by(email: params["trip"]["members"])

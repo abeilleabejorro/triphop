@@ -8,18 +8,20 @@
 			<%= @trip.name %> <span class="light">Let's Plan It!</span>
 			<span><button id="suggest-date">Suggest a new Date</button></span>
 			<div class="proposed-dates">
-<!-- 				<input placeholder="Start Date here" data-provide="datepicker" type="text" name="proposed_dates[start]" id="proposed_dates_start">
-				<input placeholder="End Date here" data-provide="datepicker" type="text" name="proposed_dates[end]" id="proposed_dates_end"> -->
+				<!-- <form action="/trips/<%= @trip.id %>" method="PUT"> -->
+				<form action="/trips/25" method="POST">
+					<input placeholder="Start Date here" data-provide="datepicker" type="text" name="proposed_dates[start]" id="proposed_dates_start">
+					<input placeholder="End Date here" data-provide="datepicker" type="text" name="proposed_dates[end]" id="proposed_dates_end">
+					<button class="btn btn-primary btn-proposed" id="proposed-now">Save Dates</button>
+				</form>
 
-				<%= fields_for :proposed_dates do |proposed_dates_form| %>
-				    <li><%= proposed_dates_form.label :start %></li>
-				    <li><%= proposed_dates_form.text_field :start, placeholder: "Start Date here", "data-provide": "datepicker" %></li>
-				    <li><%= proposed_dates_form.label :end %></li>
-				    <li><%= proposed_dates_form.text_field :end, placeholder: "End Date here",  "data-provide": "datepicker" %></li>
+				<%#= fields_for :proposed_dates do |f| %>
+				    <%#= f.text_field :start, placeholder: "Start Date here", "data-provide": "datepicker" %>
+				    <%#= f.text_field :end, placeholder: "End Date here",  "data-provide": "datepicker" %>
 
-				<% end %>
+						<%#= f.submit  class: 'btn btn-primary btn-proposed' %>
+				<%# end %>
 
-				<li><%= f.submit  class: 'btn btn-primary' %></li>
 			</div>
 		</h1>
 		<div class="panel-group" id="accordion">

@@ -6506,3 +6506,7 @@ button.close {
   float: right;
   display: none;
 }
+
+.btn .btn-proposed {
+  padding: 3px 5px;
+}

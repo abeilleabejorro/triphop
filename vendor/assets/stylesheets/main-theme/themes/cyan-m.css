@@ -12,7 +12,7 @@
 /*
  * ===================================
  * Helper Classes
- * 
+ *
  * includes: spaces, hr, section, filling-section, small container
  * ===================================
  * */
@@ -803,7 +803,7 @@ h1 > .label {
 /*
  * ===================================
  * Icons
- * 
+ *
  * includes: Circle icons, Square icons, Colors of Icons
  * ===================================
  * */
@@ -905,7 +905,7 @@ button .fa-angle-double-right:before {
 /*
  * ===================================
  * Icons Cover
- * 
+ *
  * includes: blue icon, circle border icon
  * ===================================
  * */
@@ -932,7 +932,7 @@ button .fa-angle-double-right:before {
 /*
  * ===================================
  * Buttons
- * 
+ *
  * includes: transparent buttons, extra large button, total transparent btn
  * ===================================
  * */
@@ -1123,7 +1123,7 @@ button .fa-angle-double-right:before {
 /*
  * ===================================
  * Forms
- * 
+ *
  * includes: Form with Icon, Transparent Form, Sign Up/In Pages
  * ===================================
  * */
@@ -1252,7 +1252,7 @@ button .fa-angle-double-right:before {
 /*
  * ===================================
  * Content Boxes
- * 
+ *
  * includes: content box
  * ===================================
  * */
@@ -1299,7 +1299,7 @@ button .fa-angle-double-right:before {
 /*
  * ===================================
  * Hover Content Boxes
- * 
+ *
  * includes: Slide from top and from bottom
  * ===================================
  * */
@@ -1536,7 +1536,7 @@ button .fa-angle-double-right:before {
 /*
  * ===================================
  * Navs
- * 
+ *
  * includes: Large tabs with icon, Full Width tabs, Inline Tabs, Filter Tabs, Filter Menu
  * ===================================
  * */
@@ -1771,7 +1771,7 @@ button .fa-angle-double-right:before {
 /*
  * ===================================
  * Navbars
- * 
+ *
  * includes: Navbar Default (only dropdown-menu - rest of default navbar is in bootstrap.css ), transparent navbar, navbar inverse
  * ===================================
  * */
@@ -2289,8 +2289,8 @@ button .fa-angle-double-right:before {
 }
 /*
  * ===================================
- *  Pricing Tables 
- * 
+ *  Pricing Tables
+ *
  * includes: 3 types of pricing tables
  * ===================================
  * */
@@ -2659,7 +2659,7 @@ button .fa-angle-double-right:before {
 /*
  * ===================================
  * Collapse
- * 
+ *
  * includes: accordion (using on the Support page)
  * ===================================
  * */
@@ -2861,7 +2861,7 @@ button .fa-angle-double-right:before {
 }
 /*
  * ===================================
- * Style Switcher 
+ * Style Switcher
  * ===================================
  * */
 .switcher-icon {
@@ -4034,4 +4034,19 @@ body.wrap-width {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
+}
+
+/* save dates button */
+form, .btn, .btn-primary, .btn-proposed {
+  padding: 3px 5px;
+  font-size: 14px;
+  display: block;
+  margin: 0 auto;
+}
+
+#proposed-now {
+  padding: 3px 5px;
+  font-size: 14px;
+  display: block;
+  margin: 0 auto;
 }
