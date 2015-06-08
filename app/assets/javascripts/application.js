@@ -18,27 +18,27 @@
 //= require trips
 
 
- //=require plugins/modernizr-latest.js
- //=require plugins/picturefill.js
- //=require plugins/smoothScroll.js
- //=require plugins/wow.js
- //=require plugins/classie.js
- //=require plugins/jquery.nav.js
- //=require plugins/jquery.stellar.js
- //=require plugins/jquery.themepunch.tools.js
- //=require plugins/jquery.themepunch.revolution.js
- //=require plugins/owl.carousel.js
- //=require plugins/jquery.knob.js
- //=require plugins/form.js
- //=require plugins/dialogFx.js
- //=require plugins/jquery.cubeportfolio.js
- //=require plugins/awesome-work.js
- //=require plugins/jquery.modalEffects.js
- //=require plugins/cssParser.js
+ //=require plugins/modernizr-latest
+ //=require plugins/picturefill
+ //=require plugins/smoothScroll
+ //=require plugins/wow
+ //=require plugins/classie
+ //=require plugins/jquery.nav
+ //=require plugins/jquery.stellar
+ //=require plugins/jquery.themepunch.tools
+ //=require plugins/jquery.themepunch.revolution
+ //=require plugins/owl.carousel
+ //=require plugins/jquery.knob
+ //=require plugins/form
+ //=require plugins/dialogFx
+ //=require plugins/jquery.cubeportfolio
+ //=require plugins/awesome-work
+ //=require plugins/jquery.modalEffects
+ //=require plugins/cssParser
 
- //=require plugins.js
- //=require custom.js
- //=require style-switcher.js
+ //=require plugins
+ //=require custom
+ //=require style-switcher
 
 
 
