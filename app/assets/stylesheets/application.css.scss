@@ -11,15 +11,15 @@
  * file per style scope.
  *
 
- *= require ../../../vendor/assets/stylesheets/bootstrap/themes/orange-b.css
- *= require ../../../vendor/assets/stylesheets/main-theme/themes/orange-m.css
+ *= require bootstrap/themes/orange-b.css
+ *= require main-theme/themes/orange-m.css
 
- *= require ../../../vendor/assets/stylesheets/plugins/animations.css
- *= require ../../../vendor/assets/stylesheets/plugins/animate.css
- *= require ../../../vendor/assets/stylesheets/plugins/slider-revolution.css
- *= require ../../../vendor/assets/stylesheets/plugins/cubeportfolio.css
- *= require ../../../vendor/assets/stylesheets/plugins/owl.carousel.css
- *= require ../../../vendor/assets/stylesheets/plugins/devicons.css
+ *= require plugins/animations.css
+ *= require plugins/animate.css
+ *= require plugins/slider-revolution.css
+ *= require plugins/cubeportfolio.css
+ *= require plugins/owl.carousel.css
+ *= require plugins/devicons.css
 
  *= require bootstrap-datepicker
  *= require bootstrap-datepicker3
