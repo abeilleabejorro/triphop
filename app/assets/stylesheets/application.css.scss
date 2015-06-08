@@ -14,6 +14,11 @@
  *= require bootstrap/themes/orange-b
  *= require main-theme/themes/orange-m
 
+ *= require plugins/animations
+ *= require plugins/animate
+ *= require plugins/slider-revolution
+ *= require plugins/cubeportfolio
+
  *= require_tree .
  *= require_self
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
