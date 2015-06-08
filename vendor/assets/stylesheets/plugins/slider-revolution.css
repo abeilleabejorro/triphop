@@ -1766,7 +1766,8 @@ img.tp-slider-alternative-image {
 .tp-bannertimer {
     width: 100%;
     height: 10px;
-    background: url(../../img/plugins/slider-revolution/timer.png);
+    /*background: url(../../img/plugins/slider-revolution/timer.png);*/
+    background-image: image-url("timer.png");
     position: absolute;
     z-index: 200;
     top: 0px

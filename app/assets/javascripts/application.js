@@ -36,7 +36,6 @@
  //=require plugins/jquery.modalEffects.js
  //=require plugins/cssParser.js
 
- //=require plugins/snazzy-maps.js
  //=require plugins.js
  //=require custom.js
  //=require style-switcher.js
