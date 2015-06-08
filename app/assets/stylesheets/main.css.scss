@@ -1,9 +1,19 @@
-$yellow: #e3b62d;
+$yellow: #FFC31C;
 $orange: #ff7302;
+$gray:  #33353D;
+$blue: #FFC31C;//changed to yellow
+$dark: #465055;
 @mixin shadow( $hv:2px, $vv:1px) {
 	-webkit-box-shadow: $hv $hv $hv $vv  rgba(0,0,0, 0.3);
 	-moz-box-shadow: $hv $hv $hv $vv rgba(0,0,0, 0.3);
 	box-shadow: $hv $hv $hv $vv rgba(0,0,0, 0.3);
+}
+@mixin circle( $size: 40px ) {
+	display: block;
+	width: $size;
+	height: $size;
+	border-radius: 50%;
+	text-align: center;
 }
 //============================
 //   GENERAL
@@ -11,8 +21,24 @@ $orange: #ff7302;
 h1, h2, h3, h4 {
 	font-weight: bold;
 }
+.divided,
+.sub-divided {
+	width: 90%;
+	margin: 10px auto;
+}
+.divided {
+	padding-bottom: 3px;
+	padding-right: 30px;
+	border-bottom: 2px solid $blue;
+}
+*:before, *:after {
+	font-family: FontAwesome;
+}
+.img-repl {
+	display: block;
+	text-indent: -9999px;
+}
 form {
-	width: 500px;
 	.field {
 		margin-top: 20px;
 	}
@@ -23,6 +49,7 @@ form {
 		font-size: 2rem; 	
 	}
 }
+
 ul {
 	list-style: none;
 }
@@ -37,7 +64,7 @@ ul {
 	text-indent: -9999px;
 }
 .top-section {
-	margin-top: 80px;
+	margin-top: 90px;
 	margin-bottom: 100px;
 	padding: 20px 50px;
 	//background-color: #e85c41;
@@ -46,11 +73,25 @@ ul {
 	font-weight: normal;
 	font-size: 3rem;
 }
+.btn-corner {
+	position: absolute;
+	bottom: -60vh;
+	left: 0px;
+	font-size: 2rem;
+	padding: 5px 30px;
+}
+#backBtn:before {
+	content: '\f137';
+	margin-right: 10px;
+}
+
+
 //============================
 //   APPLICATION
 //============================
 .navbar {
-	height: 80px;
+	//height: 80px;
+	z-index: 1000;
 }
 //============================
 //   HOME
@@ -60,14 +101,12 @@ ul {
 	height: 100vh;
 	max-height: 100vh !important;
 }
-
 #th-logo {
 	width: 400px;
 	height: 200px;
 	margin-left: 150px;
 }
-
-.s-title.thcustom {
+.s-title.thcustom, h1 {
 	font-size: 4rem !important;
 }
 .tp-caption {
@@ -100,23 +139,111 @@ ul {
 	}
 }
 //============================
+//   WHOLE_PAGES
+//============================
+.whole-page {
+	height: 90vh;
+	padding-top: 90px;
+	margin: 0px !important;
+	background-size: 100%;
+	.container {
+		position: relative;
+		height: 90vh;
+	}
+	h1 {
+		color: #fff;
+	}
+	h2.divided {
+		position: relative;
+	}
+	ul {
+		padding-left: 25px;
+	}
+	.form-panel {
+		position: absolute;
+		top: 5%;
+		right: 0%;
+		z-index: 10;
+		width: 500px;
+		padding: 30px 20px;
+		background-color: rgba(250,250,250,0.7);
+		border: 2px solid $blue;
+		outline: 6px solid rgba(250,250,250,0.7);
+		@include shadow();
+	}
+	p {
+		float: left;
+		
+		font-size: 1.5rem;
+		font-weight: normal;
+	}
+	.button_to {
+		float: right;
+		margin-top: -20px;
+	}
+}
+.new-trip {
+	background-image: image-url("sneakers.jpg");
+	h2:after {
+		content: '\f0f2';
+		position: absolute;
+		right: 0px;
+		color: $blue;
+	}	
+}
+.registration {
+	background-image: image-url("hills.jpg");	
+}
+.trouble {
+	background-image: image-url("traveler.jpg");
+	.form-panel {
+		top: 10%;
+		width: 450px;
+	}	
+}
+//============================
 //   EDIT
 //============================
-.main-panel {
-	overflow: hidden;
-	border-top: 4px solid $yellow;
-	aside, .board {
-		padding: 0px !important;
-
+.edit-board {
+	background-color: $dark;
+	h2 {
+		width: 100%;
+		color: #fff;
+		border-color: $yellow;
+		span {
+			display: block;
+			float: right;
+		}
 	}
-	h4.panle-title {
-		font-weight: bold !important;
-	}
-	.board > * {
+}
+.board-bgd {	
+	iframe {
 		width: 100%;
 	}
-	
 }
+.board-panel {
+	li {
+		font-size: 2rem;
+		margin-top: 10px;
+	}
+	.container.panel {
+		width: 100%;
+	}
+}
+.pic-thumb{
+	@include circle( 26px);
+	float: left;
+	border: 1px solid $blue;
+	margin: 3px 5px;
+}
+#transportation {
+	.icons .selected {
+		color: $blue;
+	}
+}
+//============================
+//   MY TRIPS
+//============================
 .myTrips{
 	position: relative;
 	width: 100%;
@@ -158,11 +285,7 @@ ul {
 		}
 	}
 }
-.map-container {
-	iframe {
-		width: 100%;
-	}
-}
+
 
 
 
