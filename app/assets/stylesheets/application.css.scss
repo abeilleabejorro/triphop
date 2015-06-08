@@ -16,7 +16,15 @@
 
  *= require plugins/animations
  *= require plugins/animate
- *= require plugins/slider-revolution
+
+ *= require plugins/cubeportfolio
+ *= require plugins/owl.carousel
+ *= require plugins/devicons
+
+
+ *= require bootstrap-datepicker
+ *= require bootstrap-datepicker3
+ 
 
  *= require_tree .
  *= require_self
