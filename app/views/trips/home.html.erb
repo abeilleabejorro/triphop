@@ -24,21 +24,6 @@
   </div>
   <!-- /SLIDESHOW -->
 
-<h2><%#= link_to "create a new trip", new_trip_path, class: 'btn btn-primary new-trip' %></h2>
-
-</section>
-
-<% unless signed_in? %>
-  <script>
-    $('#createBtn').click(function(e){
-      e.preventDefault();
-      confirm('You have to be signed in');
-      // $('.login-button').click();
-      window.location.replace('/users/sign_in')
-    })
-  </script>
-
-<% end %>
         <!-- HOW IT WORKS -->
         <span class="breakPoint" id="s1"></span>
         <div class="container">
@@ -153,9 +138,6 @@
         </div>
         <!-- /HOW IT WORKS -->
 
-
-
-
         <!-- POPULAR DESTINATION -->
         <span class="breakPoint" id="s3"></span>
         <div class="bg-dark section-xlg">
@@ -250,9 +232,17 @@
         <!-- /POPULAR DESTINATION -->
 
 
+    <% unless signed_in? %>
+      <script>
+        $('#createBtn').click(function(e){
+          e.preventDefault();
+          confirm('You have to be signed in');
+          // $('.login-button').click();
+          window.location.replace('/users/sign_in')
+        })
+      </script>
 
-
-
+    <% end %>
 
 
 
