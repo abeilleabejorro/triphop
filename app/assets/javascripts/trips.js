@@ -1,11 +1,11 @@
 // suggest a new date slide up
-$(document).ready(function(){
-  $('#suggest-date').click(function(){
-    $(this).hide(function(){
-      $('.proposed-dates').show('slow');
-    });
-  })
-})
+// $(document).ready(function(){
+//   $('#suggest-date').click(function(){
+//     $(this).hide(function(){
+//       $('.proposed-dates').show('slow');
+//     });
+//   })
+// })
 
 // var url = "http://api.hotwire.com/v1/search/car?apikey=hkgbckq9muc4m7qbcrs5w5gz&format=json";
 
