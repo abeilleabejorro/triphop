@@ -1,18 +1,261 @@
-<section class="jumbotron">
 
-<h1>tripHop</h1>
+  <!-- SLIDESHOW -->
+  <span class="breakPoint" id="sTop"></span>
+  <div class="tp-banner-container">
+    <div class="tp-banner">
+      <ul>
+        <!-- SLIDE 1 -->
+        <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="full-width/d/d-thumb.jpg" data-saveperformance="off" data-title="Welcome to tripHop">
+            <!-- MAIN IMAGE -->
+            <%= image_tag "friends.jpg", :alt => "Welcome to tripHop", :data => { :bgposition => "center bottom", :bgfit => "cover", :bgrepeat => "no-repeat"} %>
+            <!-- LAYERS -->
 
-<h2><%= link_to "create a new trip", new_trip_path, class: 'btn btn-primary new-trip' %></h2>
+            <div class="tp-caption s-title thcustom customin stt  tp-resizeme" data-x="center" data-y="270" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="1000" data-start="1100" data-easing="Power4.easeOut" data-splitin="chars" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endeasing="Power4.easeIn" data-endspeed="500" style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;margin-left: -200px;">Welcome to
+            </div>
+             <div id="th-logo" class="tp-caption s-title customin stt  tp-resizeme logo" data-x="center" data-y="270" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="1000" data-start="1100" data-easing="Power4.easeOut" data-splitin="chars" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endeasing="Power4.easeIn" data-endspeed="500" style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
+            </div>
+            <div id="slogan" class="tp-caption s-title customin stt tp-resizeme" data-x="center" data-y="460" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:1;skewX:1;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 50%;" data-speed="1000" data-start="2600" data-easing="Power4.easeOut" data-splitin="words" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endeasing="Power4.easeIn" data-endspeed="600" style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">Plan Your Next Adventure
+            </div>
+            <div id="createBtn" class="tp-caption s-subtitle customin stt tp-resizeme" data-x="center" data-y="550" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:1;skewX:1;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 50%;" data-speed="1000" data-start="2600" data-easing="Power4.easeOut" data-splitin="words" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endeasing="Power4.easeIn" data-endspeed="600" style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;"><%= link_to "Create your new trip now ", new_trip_path %></div>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /SLIDESHOW -->
+
+<h2><%#= link_to "create a new trip", new_trip_path, class: 'btn btn-primary new-trip' %></h2>
 
 </section>
 
 <% unless signed_in? %>
   <script>
-    $('.new-trip').click(function(e){
+    $('#createBtn').click(function(e){
       e.preventDefault();
-      $('.navbar-link').click();
       confirm('You have to be signed in');
-      $(':submit').click();
+      // $('.login-button').click();
+      window.location.replace('/users/sign_in')
     })
   </script>
+
 <% end %>
+        <!-- HOW IT WORKS -->
+        <span class="breakPoint" id="s1"></span>
+        <div class="container">
+            <!-- Nav Tabs -->
+            <ul class="lg-tabs">
+                <li class="active">
+                    <a href="#responsive" data-toggle="tab">
+                        <i class="fa fa-suitcase"></i>
+                        <h3>Create Your Trip</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#ready" data-toggle="tab">
+                        <i class="fa fa-users"></i>
+                        <h3>Invite Your Friends</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#code" data-toggle="tab">
+                        <i class="fa fa-thumbs-up"></i>
+                        <h3>Plan It Together</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#premiumPlugins" data-toggle="tab">
+                        <i class="fa fa-picture-o"></i>
+                        <h3>Keep a Journal</h3>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-grey">
+            <!-- Tab panes -->
+            <div class="tab-content" id="features">
+                <div class="tab-pane active in" id="responsive">
+                    <div class="section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-5">
+                                    <div class="centerY">
+                                        <h2 class="big-title">Fully responsive</h2>
+                                        <p class="text-block">We added extra scripts for touch devices, made an performance optimization and reduced page loading time.</p>
+                                        <a href="#s2" class="btn btn-info btn-xlg scroll">Get Started</a>
+                                        <div class="space visible-xs visible-sm"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-7">
+                                    <img class="img-responsive center-block wow fadeInUp" src="Flat_browser4.png" alt="Influence theme is fully responsive" width="600">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="ready">
+                    <div class="section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-5">
+                                    <div class="centerY">
+                                        <h2 class="big-title animated easeFade">Ready for use</h2>
+                                        <p class="text-block animated easeFade">Making usually template isn't for us. We are giving you our template for quick start your business.</p>
+                                        <a href="#s4" class="btn btn-info btn-xlg scroll animated easeFade">Get Started</a>
+                                        <div class="space visible-xs visible-sm"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-7">
+                                    <img class="img-responsive animated fadeInUp" src="Flat_browser3.png" alt="Influence theme is ready for use" width="600">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="code">
+                    <div class="section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-5">
+                                    <div class="centerY">
+                                        <h2 class="big-title animated easeFade">Well Documented</h2>
+                                        <p class="text-block animated easeFade">Buy the Influence template and look at inside the code, it is written clearly and neatly. You can easily customize it for your using.</p>
+                                        <a href="#s4" class="btn btn-info btn-xlg scroll animated easeFade">Get Started</a>
+                                        <div class="space visible-xs visible-sm"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-7">
+                                    <img class="img-responsive animated fadeInUp" src="Flat_browser1.png" alt="Influence theme is well documented" width="600">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="premiumPlugins">
+                    <div class="section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-5">
+                                    <div class="centerY">
+                                        <h2 class="big-title animated easeFade">Premium Plugins</h2>
+                                        <p class="text-block animated easeFade">The possibilities of Slider Revolution are almost limitless with new features being added regularly.</p>
+                                        <a href="#s4" class="btn btn-info btn-xlg scroll animated easeFade">Get Started</a>
+                                        <div class="space visible-xs visible-sm"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-7">
+                                    <img class="img-responsive animated fadeInUp" src="Flat_browser2.png" alt="Premium Plugins for our customers" width="600">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /HOW IT WORKS -->
+
+
+
+
+        <!-- POPULAR DESTINATION -->
+        <span class="breakPoint" id="s3"></span>
+        <div class="bg-dark section-xlg">
+            <div class="container">
+                <h2 class="lg-title">Popular Destinations</h2>
+                <div class="cbp-panel">
+                    <div id="filters-container" class="cbp-l-filters-work filter-tabs">
+                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">SHOW ALL
+                        </div>
+                        <div data-filter=".identity" class="cbp-filter-item">ONE-DAY TRIP
+                            <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".web-design" class="cbp-filter-item">TWO_DAY TRIP
+                            <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".graphic" class="cbp-filter-item">THREE-DAY TRIP
+                            <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".logos" class="cbp-filter-item">MOre
+                            <div class="cbp-filter-counter"></div>
+                        </div>
+                    </div>
+                    <div id="grid-container" class="cbp-l-grid-work cbp-animation-quicksand">
+                        <div class="cbp-item identity">
+                            <a href="assets/ajax/work/project1.html" class="cbp-caption cbp-singlePage">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img class="img-portfolio" src="http://placehold.it/341x256" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap"></div>
+                            </a>
+                            <a href="assets/ajax/work/project1.html" class="cbp-l-grid-work-title cbp-singlePage">Dashboard</a>
+                            <div class="cbp-l-grid-work-desc">Web Design / Graphic</div>
+                        </div>
+                        <div class="cbp-item web-design logos">
+                            <a href="assets/ajax/work/project2.html" class="cbp-caption cbp-singlePage">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img class="img-portfolio" src="http://placehold.it/341x256" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap"></div>
+                            </a>
+                            <a href="assets/ajax/work/project2.html" class="cbp-l-grid-work-title cbp-singlePage">World Clock Widget</a>
+                            <div class="cbp-l-grid-work-desc">Logo / Web Design</div>
+                        </div>
+                        <div class="cbp-item graphic logos">
+                            <a href="assets/ajax/work/project3.html" class="cbp-caption cbp-singlePage">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img class="img-portfolio" src="http://placehold.it/341x256" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap"></div>
+                            </a>
+                            <a href="assets/ajax/work/project3.html" class="cbp-l-grid-work-title cbp-singlePage">To-Do Dashboard</a>
+                            <div class="cbp-l-grid-work-desc">Graphic / Logo</div>
+                        </div>
+                        <div class="cbp-item web-design graphic">
+                            <a href="assets/ajax/work/project4.html" class="cbp-caption cbp-singlePage">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img class="img-portfolio" src="http://placehold.it/341x256" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap"></div>
+                            </a>
+                            <a href="assets/ajax/work/project4.html" class="cbp-l-grid-work-title cbp-singlePage">Events and More</a>
+                            <div class="cbp-l-grid-work-desc">Web Design / Graphic</div>
+                        </div>
+                        <div class="cbp-item identity web-design">
+                            <a href="assets/ajax/work/project5.html" class="cbp-caption cbp-singlePage">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img class="img-portfolio" src="http://placehold.it/341x256" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap"></div>
+                            </a>
+                            <a href="assets/ajax/work/project5.html" class="cbp-l-grid-work-title cbp-singlePage">WhereTO App</a>
+                            <div class="cbp-l-grid-work-desc">Web Design / Identity</div>
+                        </div>
+                        <div class="cbp-item identity web-design">
+                            <a href="assets/ajax/work/project6.html" class="cbp-caption cbp-singlePage">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img class="img-portfolio" src="http://placehold.it/341x256" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap"></div>
+                            </a>
+                            <a href="assets/ajax/work/project6.html" class="cbp-l-grid-work-title cbp-singlePage">Ski Buddy</a>
+                            <div class="cbp-l-grid-work-desc">Identity / Web Design</div>
+                        </div>
+                    </div>
+                    <div class="space"></div>
+                    <div class="cbp-l-loadMore-button">
+                        <a href="assets/ajax/work/loadMore.html" class="cbp-l-loadMore-button-link btn btn-primary btn-xlg">LOAD MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /POPULAR DESTINATION -->
+
+
+
+
+
+
+
+
+
+
+

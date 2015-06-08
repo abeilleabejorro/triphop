@@ -26,12 +26,12 @@ before_action :require_login, only: [:show, :edit, :update]
   end
 
   def create
-    
+    binding.pry
     @trip = Trip.create(trip_params)
     @trip.update(invited: "" )
     @trip.update(admin: current_user)
     current_user.trips << @trip
-    
+
     # relate and save proposed_dates
     @dates = ProposedDate.create(date_params)
     @dates.update(trip_id:  @trip.id)
@@ -78,7 +78,7 @@ private
     # add current_user to trip from session path
     end
 
-  
+
   def trip_params
     params.require(:trip).permit(:name, :description, :origin, :destination)
   end
@@ -87,6 +87,6 @@ private
     params.require(:proposed_dates).permit(:start, :end)
   end
 
-end 
+end
 
 

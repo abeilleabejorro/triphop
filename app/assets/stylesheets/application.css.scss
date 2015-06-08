@@ -10,14 +10,21 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require teal-m
- *= require animations
- *= require animate
- *= require slider-revolution
- *= require cubeportfolio
- *= require owl.carousel
- *= require font-awesome
- *= require devicons
+
+ *= require bootstrap/themes/cyan-b.css
+ *= require main-theme/themes/cyan-m.css
+
+ *= require plugins/animations.css
+ *= require plugins/animate.css
+ *= require plugins/slider-revolution.css
+ *= require plugins/cubeportfolio.css
+ *= require plugins/owl.carousel.css
+ *= require plugins/font-awesome.css
+ *= require plugins/devicons.css
+
+ *= require bootstrap-datepicker
+ *= require bootstrap-datepicker3
+
  *= require_tree .
  *= require_self
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
@@ -25,5 +32,3 @@
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
  */
-
-/* Some Style from the Bootstrap Default Theme */

@@ -15,10 +15,12 @@
 <!-- DATES -->
 <%= fields_for :proposed_dates do |proposed_dates_form| %>
     <li><%= proposed_dates_form.label :start %></li>
-    <li><%= proposed_dates_form.text_field :start, placeholder: "YYYY/MM/DD" %></li>
+    <li><%= proposed_dates_form.text_field :start, placeholder: "Start Date here", "data-provide": "datepicker" %></li>
     <li><%= proposed_dates_form.label :end %></li>
-    <li><%= proposed_dates_form.text_field :end, placeholder: "YYYY/MM/DD" %></li>
+    <li><%= proposed_dates_form.text_field :end, placeholder: "End Date here",  "data-provide": "datepicker" %></li>
+
 <% end %>
+
 
 
 	<li><%= f.submit  class: 'btn btn-primary' %></li>

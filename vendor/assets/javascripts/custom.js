@@ -145,12 +145,12 @@ var Custom = function($) {
         dataBackground: function() {
             dataBackground();
         },
-        loadMoreNews: function() {
-            loadMoreNews();
-        },
-        captchaFix: function() {
-            captchaFix();
-        },
+        // loadMoreNews: function() {
+        //     loadMoreNews();
+        // },
+        // captchaFix: function() {
+        //     captchaFix();
+        // },
         mobileMenuAnimation: function() {
             mobileMenuAnimation();
         }

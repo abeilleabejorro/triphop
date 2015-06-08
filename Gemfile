@@ -1,7 +1,9 @@
 gem 'dotenv-rails', :groups => [:development, :test]
 source 'https://rubygems.org'
 
-gem 'devise'       
+gem 'devise'
+
+gem 'bootstrap-datepicker-rails'
 gem 'devise_invitable', '~> 1.3.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
