@@ -15,7 +15,7 @@
 					    <p class="text-muted"><%= @trip.description %></p>
 					    <ul>
 								<li><%= @trip.origin %> to <%= @trip.destination %></li>
-								<li><i class="fa fa-calendar"></i> Sat, Jun 12, 2015<!-- @trip.proposed_date.start--> - Mon, Jun 14, 2015<!-- @trip.proposed_date.end --></li>
+								<li><i class="fa fa-calendar"></i> <%= @trip.start_date %><!-- @trip.proposed_date.start--> - <%= @trip.end_date %><!-- @trip.proposed_date.end --></li>
 							</ul>
 					  </div>
 					</div><!--c1 -->
