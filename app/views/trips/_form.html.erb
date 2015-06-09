@@ -15,7 +15,7 @@
 <!-- DATES -->
 <%= fields_for :proposed_dates do |proposed_dates_form| %>
     <li><%= proposed_dates_form.label :start %></li>
-    <li><%= proposed_dates_form.text_field :start, :required => true, placeholder: "Start Date here", "data-provide": "datepicker" %></li>
+    <li><%= proposed_dates_form.text_field :start, :required => true, :date_cannot_be_in_the_past => true, placeholder: "Start Date here", "data-provide": "datepicker" %></li>
     <li><%= proposed_dates_form.label :end %></li>
     <li><%= proposed_dates_form.text_field :end, :required => true, placeholder: "End Date here",  "data-provide": "datepicker" %></li>
 <% end %>
