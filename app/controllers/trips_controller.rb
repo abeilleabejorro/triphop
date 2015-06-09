@@ -18,7 +18,6 @@ skip_before_filter :verify_authenticity_token
   end
 
  
-
   def create
     @trip = Trip.create(trip_params)
     @trip.update(invited: "" )
@@ -34,18 +33,21 @@ skip_before_filter :verify_authenticity_token
   end
 
   def update
-    binding.pry
     @trip = Trip.find(params["id"])
-    if User.find_by(email: params["trip"]["members"])
-      @member = User.find_by(email: params["trip"]["members"])
+      params[:email].each do |email|
+    if User.find_by(email: email)
+      @member = User.find_by(email: email)
       session["member"]=@member
       MyMailer.add_existing_member(@member, @trip).deliver_now
     else #user needs to sign up
-      @member = User.new(email: params["trip"]["members"])
+      @member = User.new(email: email)
       MyMailer.add_new_member(@member, @trip).deliver_now
     end
+    @trip.invited << email+", "
+  end
+  binding.pry
      # add @member's email to invited array
-    render nothing: true
+    redirect_to edit_trip_path(@trip)
   end
    def edit
     @trip = Trip.find(params["id"])
