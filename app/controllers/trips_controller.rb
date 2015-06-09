@@ -7,10 +7,6 @@ skip_before_filter :verify_authenticity_token
 
   end
 
-  def show
-
-    @trip = Trip.find(params[:id])
-  end
 
   def index
     render nothing: true
@@ -21,10 +17,7 @@ skip_before_filter :verify_authenticity_token
     @trip = Trip.new
   end
 
-  def edit
-    @trip = Trip.find(params["id"])
-     # binding.pry
-  end
+ 
 
   def create
     @trip = Trip.create(trip_params)
@@ -41,6 +34,7 @@ skip_before_filter :verify_authenticity_token
   end
 
   def update
+    binding.pry
     @trip = Trip.find(params["id"])
     if User.find_by(email: params["trip"]["members"])
       @member = User.find_by(email: params["trip"]["members"])
@@ -53,6 +47,14 @@ skip_before_filter :verify_authenticity_token
      # add @member's email to invited array
     render nothing: true
   end
+   def edit
+    @trip = Trip.find(params["id"])
+     # binding.pry
+  end
+    def show
+    @trip = Trip.find(params[:id])
+  end
+
   def destroy
     binding.pry
      @trip = Trip.find(params[:id])
@@ -81,9 +83,9 @@ private
     end
 
 
-  def trip_params
-    params.require(:trip).permit(:name, :description, :origin, :destination)
-  end
+  # def trip_params
+  #   params.require(:trip).permit(:name, :description, :origin, :destination)
+  # end
 
   # def date_params
   #   params.require(:proposed_dates).permit(:start, :end)
@@ -92,8 +94,8 @@ private
   def reformat_dates
       start_date_array=params["proposed_dates"]["start"].split("/")
       end_date_array=params["proposed_dates"]["end"].split("/")
-      start_date = end_date_array.insert(0, end_date_array.delete_at(2)).join("/")
-      end_date = start_date_array.insert(0, start_date_array.delete_at(2)).join("/")
+      start_date = end_date_array.insert(0, start_date_array.delete_at(2)).join("/")
+      end_date = start_date_array.insert(0, end_date_array.delete_at(2)).join("/")
       formatted_dates={start: start_date, end: end_date}
    end 
 
