@@ -157,20 +157,20 @@
 				self.unbindInterval();
 
 				//Scroll to the correct position
-				self.scrollTo(newLoc, function() {
-					//Do we need to change the hash?
-					if(self.config.changeHash) {
-						window.location.hash = newLoc;
-					}
+				// self.scrollTo(newLoc, function() {
+				// 	//Do we need to change the hash?
+				// 	if(self.config.changeHash) {
+				// 		window.location.hash = newLoc;
+				// 	}
 
-					//Add the auto-adjust on scroll back in
-					self.bindInterval();
+				// 	//Add the auto-adjust on scroll back in
+				// 	self.bindInterval();
 
-					//End callback
-					if(self.config.end) {
-						self.config.end();
-					}
-				});
+				// 	//End callback
+				// 	if(self.config.end) {
+				// 		self.config.end();
+				// 	}
+				// });
 			}
 
 			e.preventDefault();
@@ -198,13 +198,13 @@
 			}
 		},
 
-		scrollTo: function(target, callback) {
-			var offset = $(target).offset().top;
+		// scrollTo: function(target, callback) {
+		// 	var offset = $(target).offset().top;
 
-			$('html, body').animate({
-				scrollTop: offset
-			}, this.config.scrollSpeed, this.config.easing, callback);
-		},
+		// 	$('html, body').animate({
+		// 		scrollTop: offset
+		// 	}, this.config.scrollSpeed, this.config.easing, callback);
+		// },
 
 		unbindInterval: function() {
 			clearInterval(this.t);

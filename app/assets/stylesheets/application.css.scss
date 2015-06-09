@@ -10,10 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
-
  *= require bootstrap/themes/orange-b.css
  *= require main-theme/themes/orange-m.css
-
  *= require plugins/animations.css
  *= require plugins/animate.css
  *= require plugins/slider-revolution.css
@@ -21,10 +19,8 @@
  *= require plugins/owl.carousel.css
  *= require plugins/font-awesome.css
  *= require plugins/devicons.css
-
  *= require bootstrap-datepicker
  *= require bootstrap-datepicker3
-
  *= require_tree .
  *= require_self
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
