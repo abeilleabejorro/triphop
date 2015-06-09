@@ -17,5 +17,15 @@ $(document).ready(function(){
     Custom.captchaFix();
     Custom.loadMoreNews();
     Custom.mobileMenuAnimation();
+
+    
 });
+
+
+
+
+
+
+
+
     

@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update]
+before_action :getCars, only: [:show, :edit, :updates]
 skip_before_filter :verify_authenticity_token
 # before_action :check_if_invited only: [:show]
 # before_action :check_membership, only: [:show, :edit, :update]
@@ -27,18 +28,21 @@ skip_before_filter :verify_authenticity_token
   end
 
   def create
-    @trip = Trip.create(trip_params)
-    @trip.update(invited: "" )
-    @trip.update(admin: current_user)
-    current_user.trips << @trip
-
-    # relate and save proposed_dates
-    @dates = ProposedDate.create(date_params)
-    @dates.update(trip_id:  @trip.id)
-    @trip.update(start_date: @dates.start)
-    @trip.update(end_date: @dates.end)
-    @trip.save
-    redirect_to edit_trip_path(@trip)
+   @trip = Trip.create(trip_params)
+   @trip.update(invited: "" )
+   @trip.update(admin: current_user)
+   current_user.trips << @trip
+   # relate and save proposed_dates
+   @dates = ProposedDate.create(reformat_dates)
+   @dates.update(trip_id:  @trip.id)
+   @trip.update(start_date: @dates.start)
+   @trip.update(end_date: @dates.end)
+   @trip.save
+   
+   require "pry"
+   binding.pry
+   redirect_to edit_trip_path(@trip)
+    
   end
 
   def update
@@ -55,7 +59,6 @@ skip_before_filter :verify_authenticity_token
     render nothing: true
   end
   def destroy
-    binding.pry
      @trip = Trip.find(params[:id])
      @trip.destroy
      redirect_to "/users/#{current_user.id}/trips"
@@ -82,14 +85,23 @@ private
     end
 
 
-  def trip_params
-    params.require(:trip).permit(:name, :description, :origin, :destination)
-  end
+    def trip_params
+      params.require(:trip).permit(:name, :description, :origin, :destination)
+    end
 
-  def date_params
-    params.require(:proposed_dates).permit(:start, :end)
-  end
+    def reformat_dates
+       start_date_array=params["proposed_dates"]["start"].split("/")
+       end_date_array=params["proposed_dates"]["end"].split("/")
+       start_date = end_date_array.insert(0, end_date_array.delete_at(2)).join("/")
+       end_date = start_date_array.insert(0, start_date_array.delete_at(2)).join("/")
+       formatted_dates={start: start_date, end: end_date}
+    end
 
+    def getCars
+     require "pry"
+     binding.pry
+     @cars = @trip.getRentalCar(@trip)
+    end
 end
 
 
