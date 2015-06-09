@@ -23,9 +23,10 @@ class RegistrationsController < Devise::RegistrationsController
     
     if session["path"]
       @trip = Trip.find(session["path"].split("/")[2].to_i)
-      @trip.members.push(@user) 
-      @trip.save
-      @user.save
+      add_user_to_trip(@trip, @user)
+      # @trip.members.push(@user) 
+      # @trip.save
+      # @user.save
       redirect_to session["path"]
     else
      redirect_to root_path
@@ -34,6 +35,11 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   private
+  def add_user_to_trip(trip, user)
+    @trip.members.push(@user) 
+    @trip.save
+    @user.save
+  end 
 
   def sign_up_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
