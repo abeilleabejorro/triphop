@@ -1,9 +1,8 @@
-
 # Triphop
 
 ## Description
 
-group trip planning
+group trip planning for the 21st century!
 
 ## Screenshots
 

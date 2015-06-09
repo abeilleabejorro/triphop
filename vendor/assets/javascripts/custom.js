@@ -7,7 +7,7 @@ var Custom = function($) {
     'use strict';
 
     /*-----------------------------------------------------------
-        Replace 'click' action for the 'touchend' or 'mouseup' 
+        Replace 'click' action for the 'touchend' or 'mouseup'
     ------------------------------------------------------------*/
     var isTouchDevice = 'ontouchstart' in document.documentElement;
     //set 'touchend' for touch devices - much faster response

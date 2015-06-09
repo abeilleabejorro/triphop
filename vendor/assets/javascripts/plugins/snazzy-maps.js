@@ -1,5 +1,5 @@
 // When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', init);
+// google.maps.event.addDomListener(window, 'load', init);
 
 function init() {
 	// Basic options for a simple Google Map
@@ -27,7 +27,7 @@ function init() {
 		// The latitude and longitude to center the map (always required)
 		center: myLatlng, // New York
 
-		// How you would like to style the map. 
+		// How you would like to style the map.
 		// This is where you would paste any style found on Snazzy Maps.
 		styles: [{
 			featureType: "administrative",
@@ -53,7 +53,7 @@ function init() {
 			featureType: "transit",
 			stylers: [{
 				visibility: "simplified"
-                    }]  
+                    }]
                 }, {
 			featureType: "landscape",
 			stylers: [{
@@ -62,7 +62,7 @@ function init() {
                 }, {
 			featureType: "road.highway",
 			stylers: [{
-				visibility: "off" 
+				visibility: "off"
                     }]
                 }, {
 			featureType: "road.local",

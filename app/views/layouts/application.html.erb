@@ -13,7 +13,7 @@
   <!-- Favicon - this tools will help you generate favicons for all platform - http://realfavicongenerator.net/ -->
   <link rel="shortcut icon" href="favicons/favicon.png">
   <!-- FONTS -->
-  <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <!-- MAIN STYLES -->
   <link rel="stylesheet" type="text/scss" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -63,7 +63,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Logged in as <i class="fa fa-user"></i> <strong><%= current_user.name %></strong><span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><%= link_to "Create new trip", new_trip_path %></li>
+                  <li><%= link_to 'Create new trip', new_trip_path %></li>
                   <li><%= link_to 'My trips', "/users/#{current_user.id}/trips" %></li>
                   <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
                   <li class="divider"></li>
@@ -71,8 +71,8 @@
                 </ul>
               </li>
             <% else %>
-              <li><%= link_to "Sign up", new_user_registration_path  %></li>
-              <li><%= link_to "Login", new_user_session_path, class: "login-button" %></li>
+              <li><%= link_to 'Sign up', new_user_registration_path  %></li>
+              <li><%= link_to 'Login', new_user_session_path, class: "login-button" %></li>
             <% end %>
           </ul>
         </div>
@@ -157,7 +157,6 @@
         Plugins.owlCarousel();
         Plugins.knobs(".lbKnob", "#26C6DA");
         Plugins.modalEffects();
-
         //Custom JS Init
         Custom.init();
         Custom.captchaFix();
