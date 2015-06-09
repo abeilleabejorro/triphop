@@ -1,5 +1,5 @@
 <section class="top-section edit-board">
-	<h2 class="divided"><%= @trip.name %><span>Let's Plan It!</span> </h2>
+	<h2 class="divided">Trip to <%= @trip.name %><span>Let's Plan It!</span> </h2>
 	<div class="row">
 		<section class="board-panel col-md-4">
 			<div class="panel-group" id="accordion">
@@ -15,7 +15,7 @@
 					    <p class="text-muted"><%= @trip.description %></p>
 					    <ul>
 								<li><%= @trip.origin %> to <%= @trip.destination %></li>
-								<li><i class="fa fa-calendar"></i> Sat, Jun 12, 2015<!-- @trip.proposed_date.start--> - Mon, Jun 14, 2015<!-- @trip.proposed_date.end --></li>
+								<li><i class="fa fa-calendar"></i> <%= @trip.start_date %><!-- @trip.proposed_date.start--> - <%= @trip.end_date %><!-- @trip.proposed_date.end --></li>
 							</ul>
 					  </div>
 					</div><!--c1 -->
@@ -97,6 +97,11 @@
 		         </div>
 		      </div>
 		  	</div>
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-list"></i><%=link_to "Delete Trip",  trip_path(@trip), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></h4>
+        </div>
+      </div>
 			</div>
 		</section>
 		<section class="board-bgd col-md-8">
