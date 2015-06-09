@@ -27,13 +27,14 @@ skip_before_filter :verify_authenticity_token
   end
 
   def create
+    
     @trip = Trip.create(trip_params)
     @trip.update(invited: "" )
     @trip.update(admin: current_user)
     current_user.trips << @trip
-
     # relate and save proposed_dates
-    @dates = ProposedDate.create(date_params)
+    @dates = ProposedDate.create(reformat_dates)
+    binding.pry
     @dates.update(trip_id:  @trip.id)
     @trip.update(start_date: @dates.start)
     @trip.update(end_date: @dates.end)
@@ -89,6 +90,14 @@ private
   def date_params
     params.require(:proposed_dates).permit(:start, :end)
   end
+
+  def reformat_dates
+    start_date_array=params["proposed_dates"]["start"].split("/")
+    end_date_array=params["proposed_dates"]["end"].split("/")
+    start_date = end_date_array.insert(0, end_date_array.delete_at(2)).join("/")
+    end_date = start_date_array.insert(0, start_date_array.delete_at(2)).join("/")
+    formatted_dates={start: start_date, end: end_date}
+  end 
 
 end
 
