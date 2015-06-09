@@ -8,14 +8,21 @@
   <!--/BACKGROUND IMAGE -->
 
   <!--MY TRIPS -->
+  <% if @trips.count == 0 %> 
+  <div class="section-xlg container">
+  <h2 class="lg-title">You have no trips yet!</h2>
+  <h2 style="text-align: center;"><a href="/trips/new">Get started!</a></h2>
+<% else %>
   <div class="section-xlg container">
     <h2 class="lg-title">My Trips</h2>
     <div class="space-md"></div>
     <div id="teamSlider" class="owl-carousel">
-			<% @trips.each do |trip| %>
+    
+  		<% @trips.each do |trip| %>
 				<div class="item">
           <div class="profile-circle fadeIn wow" data-wow-delay="0.2s">
-          	<div class="pic-container">
+          	 <h3><%=link_to "Delete",  trip_path(trip), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></h3>
+            <div class="pic-container">
           		<%= image_tag "pics/boston.jpg", :alt => "Boston" %>
           	</div>
             <h3><%= link_to trip.name, edit_trip_path(trip) %></h3>
@@ -24,6 +31,8 @@
           </div><!--profile-circle -->
         </div><!-- item -->
       <% end %>
+       <% end %>
+       <% else %>
   	</div><!--teamSlider -->
 
 </div><!--section-xlg -->

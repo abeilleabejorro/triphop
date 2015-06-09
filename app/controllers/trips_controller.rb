@@ -42,7 +42,6 @@ skip_before_filter :verify_authenticity_token
   end
 
   def update
-    binding.pry
     @trip = Trip.find(params["id"])
     if User.find_by(email: params["trip"]["members"])
       @member = User.find_by(email: params["trip"]["members"])
@@ -55,6 +54,12 @@ skip_before_filter :verify_authenticity_token
      # add @member's email to invited array
     render nothing: true
   end
+  def destroy
+    binding.pry
+     @trip = Trip.find(params[:id])
+     @trip.destroy
+     redirect_to "/users/#{current_user.id}/trips"
+  end 
 
   def all
     @all ||= self.members
