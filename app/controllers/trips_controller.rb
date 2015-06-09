@@ -33,6 +33,7 @@ skip_before_filter :verify_authenticity_token
   end
 
   def update
+    binding.pry
     @trip = Trip.find(params["id"])
       params[:email].each do |email|
     if User.find_by(email: email)
@@ -85,9 +86,9 @@ private
     end
 
 
-  # def trip_params
-  #   params.require(:trip).permit(:name, :description, :origin, :destination)
-  # end
+  def trip_params
+    params.require(:trip).permit(:name, :description, :origin, :destination)
+  end
 
   # def date_params
   #   params.require(:proposed_dates).permit(:start, :end)
