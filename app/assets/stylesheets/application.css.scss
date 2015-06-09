@@ -10,20 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
-
- *= require ../../../vendor/assets/stylesheets/bootstrap/themes/orange-b
- *= require ../../../vendor/assets/stylesheets/main-theme/themes/orange-m
-
- *= require ../../../vendor/assets/stylesheets/plugins/animations
- *= require ../../../vendor/assets/stylesheets/plugins/animate
- *= require ../../../vendor/assets/stylesheets/plugins/slider-revolution
- *= require ../../../vendor/assets/stylesheets/plugins/cubeportfolio
- *= require ../../../vendor/assets/stylesheets/plugins/owl.carousel
- *= require ../../../vendor/assets/stylesheets/plugins/devicons
-
+ *= require bootstrap/themes/orange-b.css
+ *= require main-theme/themes/orange-m.css
+ *= require plugins/animations.css
+ *= require plugins/animate.css
+ *= require plugins/slider-revolution.css
+ *= require plugins/cubeportfolio.css
+ *= require plugins/owl.carousel.css
+ *= require plugins/font-awesome.css
+ *= require plugins/devicons.css
  *= require bootstrap-datepicker
  *= require bootstrap-datepicker3
-
  *= require_tree .
  *= require_self
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"

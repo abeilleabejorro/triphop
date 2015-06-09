@@ -18,27 +18,27 @@
 //= require trips
 
 
- //=require ../../../vendor/assets/javascripts/plugins/modernizr-latest.js
- //=require ../../../vendor/assets/javascripts/plugins/picturefill.js
- //=require ../../../vendor/assets/javascripts/plugins/smoothScroll.js
- //=require ../../../vendor/assets/javascripts/plugins/wow.js
- //=require ../../../vendor/assets/javascripts/plugins/classie.js
- //=require ../../../vendor/assets/javascripts/plugins/jquery.nav.js
- //=require ../../../vendor/assets/javascripts/plugins/jquery.stellar.js
- //=require ../../../vendor/assets/javascripts/plugins/jquery.themepunch.tools.js
- //=require ../../../vendor/assets/javascripts/plugins/jquery.themepunch.revolution.js
- //=require ../../../vendor/assets/javascripts/plugins/owl.carousel.js
- //=require ../../../vendor/assets/javascripts/plugins/jquery.knob.js
- //=require ../../../vendor/assets/javascripts/plugins/form.js
- //=require ../../../vendor/assets/javascripts/plugins/dialogFx.js
- //=require ../../../vendor/assets/javascripts/plugins/jquery.cubeportfolio.js
- //=require ../../../vendor/assets/javascripts/plugins/awesome-work.js
- //=require ../../../vendor/assets/javascripts/plugins/jquery.modalEffects.js
- //=require ../../../vendor/assets/javascripts/plugins/cssParser.js
+ //=require plugins/modernizr-latest
+ //=require plugins/picturefill
+ //=require plugins/smoothScroll
+ //=require plugins/wow
+ //=require plugins/classie
+ //=require plugins/jquery.nav
+ //=require plugins/jquery.stellar
+ //=require plugins/jquery.themepunch.tools
+ //=require plugins/jquery.themepunch.revolution
+ //=require plugins/owl.carousel
+ //=require plugins/jquery.knob
+ //=require plugins/form
+ //=require plugins/dialogFx
+ //=require plugins/jquery.cubeportfolio
+ //=require plugins/awesome-work
+ //=require plugins/jquery.modalEffects
+ //=require plugins/cssParser
 
- //=require ../../../vendor/assets/javascripts/plugins.js
- //=require ../../../vendor/assets/javascripts/custom.js
- //=require ../../../vendor/assets/javascripts/style-switcher.js
+ //=require plugins
+ //=require custom
+ //=require style-switcher
 
 
 
