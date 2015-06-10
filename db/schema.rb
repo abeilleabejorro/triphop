@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605184227) do
+ActiveRecord::Schema.define(version: 20150610144811) do
 
   create_table "accomodations", force: :cascade do |t|
     t.string   "type"
@@ -19,9 +19,20 @@ ActiveRecord::Schema.define(version: 20150605184227) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "links", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "urls"
+  end
+
+  add_index "links", ["trip_id"], name: "index_links_on_trip_id"
+  add_index "links", ["user_id"], name: "index_links_on_user_id"
+
   create_table "proposed_dates", force: :cascade do |t|
-    t.datetime "start"
-    t.datetime "end"
+    t.date     "start"
+    t.date     "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "trip_id"

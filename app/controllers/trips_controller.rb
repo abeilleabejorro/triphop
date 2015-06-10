@@ -8,6 +8,10 @@ skip_before_filter :verify_authenticity_token
 
   end
 
+  def show
+    @trip = Trip.find(params[:id])
+  end
+
 
   def index
     render nothing: true
@@ -18,12 +22,17 @@ skip_before_filter :verify_authenticity_token
     @trip = Trip.new
   end
 
- 
+  def edit
+    @link = Link.new
+    @trip = Trip.find(params["id"])
+  end
+
   def create
     @trip = Trip.create(trip_params)
     @trip.update(invited: "" )
     @trip.update(admin: current_user)
     current_user.trips << @trip
+
     # relate and save proposed_dates
     @dates = ProposedDate.create(reformat_dates)
     @dates.update(trip_id:  @trip.id)
@@ -46,19 +55,12 @@ skip_before_filter :verify_authenticity_token
         @member = User.new(email: email)
         MyMailer.add_new_member(@member, @trip).deliver_now
       end
-    @trip.invited << email+", "
-    @trip.save
+      @trip.invited << email+", "
+      @trip.save
     end
   end
      # add @member's email to invited array
     redirect_to edit_trip_path(@trip)
-  end
-   def edit
-    @trip = Trip.find(params["id"])
-     # binding.pry
-  end
-    def show
-    @trip = Trip.find(params[:id])
   end
 
   def destroy

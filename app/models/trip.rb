@@ -5,8 +5,8 @@ class Trip < ActiveRecord::Base
   accepts_nested_attributes_for :members
 	has_one :proposed_date
 	has_many :transportations
-	has_many :accomodations
-
+  has_many :accomodations
+	has_many :links
 
 	def invited?
 	self.invited.split(", ")
