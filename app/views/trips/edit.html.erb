@@ -245,7 +245,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <section class="section-xlg container">
   <h2 class="lg-title">Accomodations</h2>
 
-  <div class="cbp-panel">
+ <div class="cbp-panel">
     <!-- filter -->
     <div id="filters-container" class="cbp-l-filters-work filter-tabs">
       <div data-filter="*" class="cbp-filter-item cbp-filter-item-active">SHOW ALL</div>
@@ -256,30 +256,16 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     <!-- content -->
        <div class="row">
-        <!-- <div class="col-md-4">
-          <blockquote class="embedly-card"><h4><a href="https://www.airbnb.com/rooms/3539149">Sag Harbor Beach House in Sag Harbor</a></h4><p>Apartment in Sag Harbor, United States. Please Read All: This is my Summer home, Upstairs is living quarters for my family when they come to visit, downstairs are 2 studio apartments, one of which is my office. The rental unit is only available when I dont have family here. <a href="https://www.airbnb.com/s/Sag-Harbor--NY?af=21215988&c=embedly">View all listings in Sag Harbor</a></p></blockquote>
-          <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-        </div>
 
-        <div class="col-md-4">
-          <a class="embedly-card" href="http://www.hotels.com/hotel/details.html?q-room-0-adults=2&MGT=1&SYE=3&q-room-0-children=0&tab=description&YGF=0&ZSX=0&q-localised-check-out=06/10/15&q-localised-check-in=06/09/15&JHR=2&pa=1&hotel-id=187354&FPQ=3&WOD=2&WOE=3&ZSX=0&SYE=3&MGT=1&YGF=0&WOD=1&WOE=2&JHR=2USD&FPQ=3USD">The Atlantic in Southampton</a>
-          <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-        </div>
-
-        <div class="col-md-4">
-          <blockquote class="embedly-card"><h4><a href="https://www.airbnb.com/rooms/3539149">Sag Harbor Beach House in Sag Harbor</a></h4><p>Apartment in Sag Harbor, United States. Please Read All: This is my Summer home, Upstairs is living quarters for my family when they come to visit, downstairs are 2 studio apartments, one of which is my office. The rental unit is only available when I dont have family here. <a href="https://www.airbnb.com/s/Sag-Harbor--NY?af=21215988&c=embedly">View all listings in Sag Harbor</a></p></blockquote>
-          <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-        </div> -->
-
-        <% @trip.links.each do |link| %>
-            <%# if link != nil %>
+        <% if @trip.links != nil %>
+          <% @trip.links.each do |link| %>
               <% arr_links = link["urls"].split(',') %>
               <% arr_links.each do |url| %>
                 <div class="col-md-4">
-                  <a href=<%= url %> id="someID">Check</a>
+                  <a href="<%= url %>" class="embedly-card"></a>
                 </div>
               <% end %>
-            <%# end %>
+          <% end %>
         <% end %>
       </div>
     <!-- end content -->
@@ -293,9 +279,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </div>
 </section>
 
-<!-- <a href="http://embed.ly" class="embedly-card">Embedly</a>
-
-<blockquote class="embedly-card">
+<!-- <blockquote class="embedly-card">
   <h4><a href="http://embed.ly/docs">Documentation</a></h4>
   <p>
     Embedly's Documentation is the best.
