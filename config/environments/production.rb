@@ -64,7 +64,7 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: "http://trip-hop.herokuapp.com" }
 
   # Don't care if the mailer can't send.
   config.action_mailer.delivery_method = :smtp
@@ -75,7 +75,7 @@ Rails.application.configure do
     port: 587,
     authentication: 'plain',
     user_name: 'triphophq@gmail.com',
-    password: ENV['GMAIL_KEY']
+    password: "qrdulzmgvrxzdppc"
   }
 
 
