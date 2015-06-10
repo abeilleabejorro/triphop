@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
   $("#invite").click(function(e){
     if ($("#email1").val()=="" && $("#email2").val()=="" && $("#email2").val()=="" ){

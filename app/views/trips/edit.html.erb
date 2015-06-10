@@ -150,9 +150,77 @@
       </div>
 			</div>
 		</section>
-		<section class="board-bgd col-md-8">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1529226.018610346!2d-73.69606700868235!3d41.53093184945187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY!3m2!1d40.712783699999996!2d-74.0059413!4m5!1s0x89e3652d0d3d311b%3A0x787cbf240162e8a0!2sBoston%2C+MA!3m2!1d42.3600825!2d-71.0588801!5e0!3m2!1sen!2sus!4v1433681071465" width="800" height="600" frameborder="0" style="border:0"></iframe>
-		</section>
+
+  <!-- GOOGLEMAPS -->  
+
+
+  <!-- GOOGLEMAPS -->  
+    <section class="board-bgd col-md-8">
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=" + ENV[MAPS_KEY]></script>
+
+<script type="text/javascript">
+   var directionsDisplay;
+    var directionsService = new google.maps.DirectionsService();
+    var map;
+
+    function initialize() {
+      directionsDisplay = new google.maps.DirectionsRenderer();
+      var thehome = new google.maps.LatLng(40.4764, -106.8267);
+      var mapOptions = {
+        zoom:7,
+        center: thehome
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      directionsDisplay.setMap(map);
+      calcRoute();
+    }
+
+    function calcRoute() {
+      var start = document.getElementById('start').value;
+      var end = document.getElementById('end').value;
+      var request = {
+          origin:start,
+          destination:end,
+          travelMode: google.maps.TravelMode.DRIVING
+      };
+      directionsService.route(request, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(response);
+        }
+      });
+    }
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+  
+    <div id="panel">
+    <form>
+      Start:<br>
+       <input id="start" type="text" name="end" value="<%= @trip.origin%>"><br>
+      End:<br>
+       <input id="end" type="text" name="end" value="<%= @trip.destination%>">
+  </form>
+
+  </div>
+   
+
+  <div id="map-canvas"></div>
+    
+</section>
+    <!-- END GOOGLEMAPS -->
+
+
+
+
+
+
+<!-- END GOOGLEMAPS -->
+
+
+
+
 	</div>
 </section>
 <section class="section-xlg container">
