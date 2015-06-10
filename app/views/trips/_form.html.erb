@@ -4,13 +4,13 @@
   <li><%= f.text_field :name %></li>
 
   <li><%= f.label :description %>:</li>
-  <li><%= f.text_field :description %></li>
+  <li><%= f.text_field :description, class: 'places' %></li>
 
   <li><%= f.label :origin %>:</li>
-  <li><%= f.text_field :origin %></li>
+  <li><%= f.text_field :origin, class: 'places' %></li>
 
   <li><%= f.label :destination %>:</li>
-  <li><%= f.text_field :destination %></li>
+  <li><%= f.text_field :destination, class: 'places' %></li>
 
 <!-- DATES -->
 <%= fields_for :proposed_dates do |proposed_dates_form| %>
