@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update]
-before_action :getCars, only: [:show, :edit, :updates]
+before_action :getCars, only: [:show, :edit, :update]
 skip_before_filter :verify_authenticity_token
 # before_action :check_if_invited only: [:show]
 # before_action :check_membership, only: [:show, :edit, :update]
@@ -38,9 +38,6 @@ skip_before_filter :verify_authenticity_token
    @trip.update(start_date: @dates.start)
    @trip.update(end_date: @dates.end)
    @trip.save
-   
-   require "pry"
-   binding.pry
    redirect_to edit_trip_path(@trip)
     
   end
@@ -92,15 +89,14 @@ private
     def reformat_dates
        start_date_array=params["proposed_dates"]["start"].split("/")
        end_date_array=params["proposed_dates"]["end"].split("/")
-       start_date = end_date_array.insert(0, end_date_array.delete_at(2)).join("/")
-       end_date = start_date_array.insert(0, start_date_array.delete_at(2)).join("/")
+       end_date = end_date_array.insert(0, end_date_array.delete_at(2)).join("/")
+       start_date = start_date_array.insert(0, start_date_array.delete_at(2)).join("/")
        formatted_dates={start: start_date, end: end_date}
     end
 
     def getCars
-     require "pry"
-     binding.pry
-     @cars = @trip.getRentalCar(@trip)
+     trip = Trip.find(params["id"])
+     @cars = trip.getRentalCar(trip)
     end
 end
 

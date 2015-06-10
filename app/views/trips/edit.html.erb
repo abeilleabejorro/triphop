@@ -46,41 +46,49 @@
 		      </div><!--members-->
 	  		</div><!--panel -->
 	  		<!-- TRANSPORTATION -->
-	  		<div class="panel panel-default">
-		      <a data-toggle="collapse" data-parent="#accordion" href="#transportation">
-	          <div class="panel-heading">
-	            <h4 class="panel-title"><i class="fa fa-car"></i> How are we going?</h4>
-	          </div>
-		      </a>
-		      <div id="transportation" class="panel-collapse collapse">
-	          <div class="panel-body">
+<div class="panel panel-default">
+  <a data-toggle="collapse" data-parent="#accordion" href="#transportation">
+    <div class="panel-heading">
+      <h4 class="panel-title"><i class="fa fa-car"></i> How are we going?</h4>
+    </div>
+  </a>
+  <div id="transportation" class="panel-collapse collapse">
+    <div class="panel-body">
+    	<ul class="row icons">
+				<li class="col-md-3 selected"><i class="fa fa-check-square-o"></i> <i class="fa fa-car"></i></li>
+				<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-bus"></i></li>
+				<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-train"></i></li>
+				<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-rocket"></i></li>
+			</ul>
+			<% @cars.each do |car| %>
+      <ul id="carRental"class="row">
+      	<li class="item-info col-md-8">
+					<ul class="row rentals">
+						<li><h4><%= car[:type] %></h4></li>
+						<li class="col-md-6 lbl">Passengers:</li>
+							<li class="col-md-6"><%= car[:passengers] %></li>
+						<li class="col-md-6 lbl">Milage</li>
+							<li class="col-md-6"><%= car[:milage] %></li>
+						<li class="col-md-6 lbl">Pickup:</li>
+							<li class="col-md-6"><%= car[:pickup] %></li>
+					</ul>
+      	</li>
+				<li class="item-snap col-md-4">
+					<div class="thumbnail">
+						<%= image_tag car[:image], style: 'width: 100%; height: auto;' %>
+					</div>
 
-	          	<ul class="row icons">
-								<li class="col-md-3 selected"><i class="fa fa-check-square-o"></i> <i class="fa fa-car"></i></li>
-								<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-bus"></i></li>
-								<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-train"></i></li>
-								<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-rocket"></i></li>
-							</ul>
-		          <ul id="carRental"class="row">
-		          	<li class="col-md-7 item-info">
-									<ul>
-										<li></li>
-									</ul>
-		          	</li>
-								<li class="col-md-4 item-snap">
-									<div class="thumbnail">
-										<%= image_tag 'cars/ccar.png' %>
-									</div>
-									<h2>$435.60</h2>
-									<h6>total</h6>
-								</li>
-								<li class="col-md-1">
-									<%= link_to <i class="fa fa-chevron-circle-right"></i>, "https://www.hotwire.com/car/deeplink-details.jsp?resultId=ODY2MTA1ODQ5NDo0MTg4OTM3OTEwNzg-&useCluster=2&sid=S001&bid=B001&inputId=api-results&actionType=303&useCluster=2", target: "new" %>
-								</li>
-		          </ul>
-	          </div>
-		      </div>
-				</div>
+					<div>
+						<h3>$<%= car[:price] %></h3>
+						<h4><%= link_to 'Rent It!', car[:link], target: "new" %></h>
+					</div>
+				</li>
+				
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
 				<!-- ACCOMODATION -->
 				<div class="panel panel-default">
 		      <a data-toggle="collapse" data-parent="#accordion" href="#accomodation">
