@@ -23,7 +23,8 @@
           <div class="profile-circle fadeIn wow" data-wow-delay="0.2s">
           	 <h3><%=link_to "Delete",  trip_path(trip), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></h3>
             <div class="pic-container">
-          		<%= image_tag "pics/boston.jpg", :alt => "Boston" %>
+       <a href="/trips/<%=trip.id%>/edit"><%= image_tag "pics/boston.jpg", :alt => "Boston" %></a>
+          	<!-- 	<%= image_tag "pics/boston.jpg", :alt => "Boston" %> -->
           	</div>
             <h3><%= link_to trip.name, edit_trip_path(trip) %></h3>
             <h4><%= trip.origin %> - <%= trip.destination %></h4>

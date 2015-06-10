@@ -22,26 +22,52 @@
 				</div>
 				<!-- MEMBERS -->
 				<div class="panel panel-default">
+
 				  <a data-toggle="collapse" data-parent="#accordion" href="#members">
 				    <div class="panel-heading">
 				      <h4 class="panel-title"><i class="fa fa-users"></i>Who is Coming?</h4>
 				    </div>
 				  </a>
-		      <div id="members" class="panel-collapse collapse">
+		      <div id="members" class="panel-collapse collapse"> 
 		        <div class="panel-body">
 		          <h5 class="title-sm-v2">Invite your Friends:</h5>
-		          <div class="container panel">
+		           <i class="fa fa-spinner fa-spin fa-5x fa-align-center"></i>
+              <div class="container panel">
 		          	<ul>
 							  <form action="/trips/<%=@trip.id%>" method="POST">
-                <input type="email" name="email[]" placeholder="friend@friend.com">
-							    <li><span class="pic-thumb"><i class="fa fa-user-plus"></i></span></i><%= link_to 'Invite More', :path => '#' %></li>
-							    	<li class="col-md-6">
-						    <input type="submit" class="btn btn-primary">
-                </form>
+                <fieldset>
+                <li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email1">
                 </li>
+                <li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email2">
+                </li>
+
+                 <li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email3"></li>
+                </fieldset>
+                <fieldset>
+							    <!-- <li><span class="pic-thumb"><i class="fa fa-user-plus"></i></span></i><%= link_to 'Invite More', id: "add-email", :path => '#' %></li> -->
+                  <li><span class="pic-thumb"><i class="fa fa-user-plus"></i></span></i>
+                  <a href="/" class="add-email">Invite More Friends</a></li>
+							    	<li class="col-md-6">
+						    
+                <input type="submit" class="btn btn-primary" id="invite"></li>
+                </fieldset>
+                </form>
+              
 							  </ul>
 							</div>
 		        </div>
+            <div> 
+             <strong> Invited:</strong> <br>
+                <% @trip.invited?.each do |invitee|%>
+                <%=invitee%> <br>
+                <%end %>
+                </div>
+                <div> 
+             <strong> Confirmed:</strong> <br>
+                <% @trip.members.each do |member|%>
+                <%=member.email%> <br>
+                <%end %>
+                </div>
 		      </div><!--members-->
 	  		</div><!--panel -->
 	  		<!-- TRANSPORTATION -->
