@@ -1,20 +1,3 @@
-// suggest a new date slide up
-// $(document).ready(function(){
-//   $('#suggest-date').click(function(){
-//     $(this).hide(function(){
-//       $('.proposed-dates').show('slow');
-//     });
-//   })
-// })
-
-// var url = "http://api.hotwire.com/v1/search/car?apikey=hkgbckq9muc4m7qbcrs5w5gz&format=json";
-
-// $(document).ready(function() {
-
-// $('#new_trip').submit(function() {
-//      ajaxCall();
-
-//  });
 
 
 // //   // user hits enter while on the input field

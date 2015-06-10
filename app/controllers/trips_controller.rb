@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update]
+before_action :getCars, only: [:show, :edit, :update]
 skip_before_filter :verify_authenticity_token
 # before_action :check_if_invited only: [:show]
 # before_action :check_membership, only: [:show, :edit, :update]
@@ -30,6 +31,7 @@ skip_before_filter :verify_authenticity_token
     @trip.update(end_date: @dates.end)
     @trip.save
     redirect_to edit_trip_path(@trip)
+
   end
 
   def update
@@ -83,13 +85,11 @@ private
     end
 
 
-  def trip_params
-    params.require(:trip).permit(:name, :description, :origin, :destination)
-  end
+    def trip_params
+      params.require(:trip).permit(:name, :description, :origin, :destination)
+    end
 
-  # def date_params
-  #   params.require(:proposed_dates).permit(:start, :end)
-  # end
+
 
   def reformat_dates
       start_date_array=params["proposed_dates"]["start"].split("/")
@@ -99,6 +99,10 @@ private
       formatted_dates={start: start_date, end: end_date}
    end 
 
+    def getCars
+     trip = Trip.find(params["id"])
+     @cars = trip.getRentalCar(trip)
+    end
 end
 
 
