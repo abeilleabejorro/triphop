@@ -33,7 +33,6 @@ skip_before_filter :verify_authenticity_token
   end
 
   def update
-    binding.pry
     @trip = Trip.find(params["id"])
       params[:email].each do |email|
     if User.find_by(email: email)
@@ -46,7 +45,6 @@ skip_before_filter :verify_authenticity_token
     end
     @trip.invited << email+", "
   end
-  binding.pry
      # add @member's email to invited array
     redirect_to edit_trip_path(@trip)
   end
@@ -59,7 +57,6 @@ skip_before_filter :verify_authenticity_token
   end
 
   def destroy
-    binding.pry
      @trip = Trip.find(params[:id])
      @trip.destroy
      redirect_to "/users/#{current_user.id}/trips"
@@ -97,8 +94,8 @@ private
   def reformat_dates
       start_date_array=params["proposed_dates"]["start"].split("/")
       end_date_array=params["proposed_dates"]["end"].split("/")
-      start_date = end_date_array.insert(0, start_date_array.delete_at(2)).join("/")
-      end_date = start_date_array.insert(0, end_date_array.delete_at(2)).join("/")
+      start_date = start_date_array.insert(0, start_date_array.delete_at(2)).join("/")
+      end_date = end_date_array.insert(0, end_date_array.delete_at(2)).join("/")
       formatted_dates={start: start_date, end: end_date}
    end 
 
