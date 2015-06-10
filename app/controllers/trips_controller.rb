@@ -37,15 +37,18 @@ skip_before_filter :verify_authenticity_token
   def update
     @trip = Trip.find(params["id"])
       params[:email].each do |email|
-    if User.find_by(email: email)
-      @member = User.find_by(email: email)
-      session["member"]=@member
-      MyMailer.add_existing_member(@member, @trip).deliver_now
-    else #user needs to sign up
-      @member = User.new(email: email)
-      MyMailer.add_new_member(@member, @trip).deliver_now
-    end
+    if email != ""    
+      if User.find_by(email: email)
+        @member = User.find_by(email: email)
+        session["member"]=@member
+        MyMailer.add_existing_member(@member, @trip).deliver_now
+      else #user needs to sign up
+        @member = User.new(email: email)
+        MyMailer.add_new_member(@member, @trip).deliver_now
+      end
     @trip.invited << email+", "
+    @trip.save
+    end
   end
      # add @member's email to invited array
     redirect_to edit_trip_path(@trip)
@@ -100,8 +103,11 @@ private
    end 
 
     def getCars
-     trip = Trip.find(params["id"])
-     @cars = trip.getRentalCar(trip)
+      trip = Trip.find(params["id"])
+      # gets car rental if trip haven't started yet
+      if trip.start_date > Date.today 
+         @cars = trip.getRentalCar(trip)
+      end
     end
 end
 
