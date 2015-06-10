@@ -8,7 +8,6 @@ skip_before_filter :verify_authenticity_token
   end
 
   def show
-
     @trip = Trip.find(params[:id])
   end
 
@@ -22,8 +21,8 @@ skip_before_filter :verify_authenticity_token
   end
 
   def edit
+    @link = Link.new
     @trip = Trip.find(params["id"])
-     # binding.pry
   end
 
   def create
@@ -32,12 +31,6 @@ skip_before_filter :verify_authenticity_token
     @trip.update(admin: current_user)
     current_user.trips << @trip
 
-    # relate and save proposed_dates
-    @dates = ProposedDate.create(date_params)
-    @dates.update(trip_id:  @trip.id)
-    @trip.update(start_date: @dates.start)
-    @trip.update(end_date: @dates.end)
-    @trip.save
     redirect_to edit_trip_path(@trip)
   end
 

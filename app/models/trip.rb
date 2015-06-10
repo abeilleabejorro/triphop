@@ -3,12 +3,13 @@ class Trip < ActiveRecord::Base
 	has_and_belongs_to_many :members, :class_name => "User"
 	has_one :proposed_date
 	has_many :transportations
-	has_many :accomodations
+  has_many :accomodations
+	has_many :links
 
 
 def invited?
 self.invited.split(", ")
-end 
-  
- 
+end
+
+
 end

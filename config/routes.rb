@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get '/users/:id/trips', to: 'users#trips'
 
+  post '/links', to: 'links#hotels'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
