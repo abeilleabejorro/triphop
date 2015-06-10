@@ -22,7 +22,6 @@
 				</div>
 				<!-- MEMBERS -->
 				<div class="panel panel-default">
-
 				  <a data-toggle="collapse" data-parent="#accordion" href="#members">
 				    <div class="panel-heading">
 				      <h4 class="panel-title"><i class="fa fa-users"></i>Who is Coming?</h4>
@@ -71,52 +70,52 @@
 		      </div><!--members-->
 	  		</div><!--panel -->
 	  		<!-- TRANSPORTATION -->
-<div class="panel panel-default">
-  <a data-toggle="collapse" data-parent="#accordion" href="#transportation">
-    <div class="panel-heading">
-      <h4 class="panel-title"><i class="fa fa-car"></i> How are we going?</h4>
-    </div>
-  </a>
-  <div id="transportation" class="panel-collapse collapse">
-    <div class="panel-body">
-    	<ul class="row icons">
-				<li class="col-md-3 selected"><i class="fa fa-check-square-o"></i> <i class="fa fa-car"></i></li>
-				<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-bus"></i></li>
-				<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-train"></i></li>
-				<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-rocket"></i></li>
-			</ul>
-			<% if @cars %>
-			<% @cars.each do |car| %>
-      <ul id="carRental"class="row">
-      	<li class="item-info col-md-8">
-					<ul class="row rentals">
-						<li><h4><%= car[:type] %></h4></li>
-						<li class="col-md-6 lbl">Passengers:</li>
-							<li class="col-md-6"><%= car[:passengers] %></li>
-						<li class="col-md-6 lbl">Milage</li>
-							<li class="col-md-6"><%= car[:milage] %></li>
-						<li class="col-md-6 lbl">Pickup:</li>
-							<li class="col-md-6"><%= car[:pickup] %></li>
-					</ul>
-      	</li>
-				<li class="item-snap col-md-4">
-					<div class="thumbnail">
-						<%= image_tag car[:image], style: 'width: 100%; height: auto;' %>
-					</div>
+        <div class="panel panel-default">
+          <a data-toggle="collapse" data-parent="#accordion" href="#transportation">
+            <div class="panel-heading">
+              <h4 class="panel-title"><i class="fa fa-car"></i> How are we going?</h4>
+            </div>
+          </a>
+          <div id="transportation" class="panel-collapse collapse">
+            <div class="panel-body">
+            	<ul class="row icons">
+        				<li class="col-md-3 selected"><i class="fa fa-check-square-o"></i> <i class="fa fa-car"></i></li>
+        				<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-bus"></i></li>
+        				<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-train"></i></li>
+        				<li class="col-md-3"><i class="fa fa-square-o"></i> <i class="fa fa-rocket"></i></li>
+        			</ul>
+        			<% if @cars %>
+        			<% @cars.each do |car| %>
+              <ul id="carRental"class="row">
+              	<li class="item-info col-md-8">
+        					<ul class="row rentals">
+        						<li><h4><%= car[:type] %></h4></li>
+        						<li class="col-md-6 lbl">Passengers:</li>
+        							<li class="col-md-6"><%= car[:passengers] %></li>
+        						<li class="col-md-6 lbl">Milage</li>
+        							<li class="col-md-6"><%= car[:milage] %></li>
+        						<li class="col-md-6 lbl">Pickup:</li>
+        							<li class="col-md-6"><%= car[:pickup] %></li>
+        					</ul>
+              	</li>
+        				<li class="item-snap col-md-4">
+        					<div class="thumbnail">
+        						<%= image_tag car[:image], style: 'width: 100%; height: auto;' %>
+        					</div>
 
-					<div>
-						<h3>$<%= car[:price] %></h3>
-						<h4><%= link_to 'Rent It!', car[:link], target: "new" %></h>
-					</div>
-				</li>
-				
-      </ul>
-      <% end %> <% else %>
-      <h3>You can't travel to the past!</h3>
-      <% end %>
-    </div>
-  </div>
-</div>
+        					<div>
+        						<h3>$<%= car[:price] %></h3>
+        						<h4><%= link_to 'Rent It!', car[:link], target: "new" %></h4>
+        					</div>
+        				</li>
+        				
+              </ul>
+              <% end %> <% else %>
+              <h3>You can't travel to the past!</h3>
+              <% end %>
+            </div>
+          </div>
+        </div>
 				<!-- ACCOMODATION -->
 				<div class="panel panel-default">
 		      <a data-toggle="collapse" data-parent="#accordion" href="#accomodation">
@@ -161,83 +160,26 @@
 		      </div>
 		  	</div>
         <div class="panel panel-default">
-        <div class="panel-heading">
-        <h4 class="panel-title"><i class="fa fa-list"></i><%=link_to "Delete Trip",  trip_path(@trip), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></h4>
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-list"></i><%=link_to "Delete Trip",  trip_path(@trip), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></h4>
+          </div>
         </div>
-      </div>
 			</div>
+
 		</section>
 
-  <!-- GOOGLEMAPS -->  
-
-
-  <!-- GOOGLEMAPS -->  
+    <!-- GOOGLEMAPS -->  
     <section class="board-bgd col-md-8">
-
-  <script src="https://maps.googleapis.com/maps/api/js?key=" + ENV[MAPS_KEY]></script>
-
-<script type="text/javascript">
-   var directionsDisplay;
-    var directionsService = new google.maps.DirectionsService();
-    var map;
-
-    function initialize() {
-      directionsDisplay = new google.maps.DirectionsRenderer();
-      var thehome = new google.maps.LatLng(40.4764, -106.8267);
-      var mapOptions = {
-        zoom:7,
-        center: thehome
-      };
-      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-      directionsDisplay.setMap(map);
-      calcRoute();
-    }
-
-    function calcRoute() {
-      var start = document.getElementById('start').value;
-      var end = document.getElementById('end').value;
-      var request = {
-          origin:start,
-          destination:end,
-          travelMode: google.maps.TravelMode.DRIVING
-      };
-      directionsService.route(request, function(response, status) {
-        if (status == google.maps.DirectionsStatus.OK) {
-          directionsDisplay.setDirections(response);
-        }
-      });
-    }
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-</script>
-  
-    <div id="panel">
-    <form>
-      Start:<br>
-       <input id="start" type="text" name="end" value="<%= @trip.origin%>"><br>
-      End:<br>
-       <input id="end" type="text" name="end" value="<%= @trip.destination%>">
-  </form>
-
-  </div>
-   
-
-  <div id="map-canvas"></div>
-    
-</section>
-    <!-- END GOOGLEMAPS -->
-
-
-
-
-
-
-<!-- END GOOGLEMAPS -->
-
-
-
-
+      <div id="panel">
+        <form>
+          Start:<br>
+           <input id="start" type="text" name="end" value="<%= @trip.origin%>"><br>
+          End:<br>
+           <input id="end" type="text" name="end" value="<%= @trip.destination%>">
+        </form>
+      </div>
+      <div id="map-canvas"></div>  
+    </section>
 	</div>
 </section>
 
