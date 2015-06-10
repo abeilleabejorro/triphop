@@ -290,5 +290,34 @@ ul {
 
 
 
+//============================
+//   GOOGLE MAPS CANVAS
+//============================  
+
+     #map-canvas {
+        height: 500px;
+        width: 600px;
+        margin: 0px;
+        padding: 0px;
+      }
+     
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+
+    #theform {
+    	height: 10px;
+    	width: 10px;
+    }
+
+
+
 
 
