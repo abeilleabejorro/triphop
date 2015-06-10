@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <%= javascript_include_tag 'http://fgnass.github.io/spin.js/spin.min.js' %>
+ <%= javascript_include_tag 'https://fgnass.github.io/spin.js/spin.min.js' %>
   <title>TripHop - The Best Way to Plan your Trips with Friends</title>
   <!-- Meta tags-->
   <meta charset="UTF-8">
@@ -17,13 +17,13 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=" + ENV[MAPS_KEY]></script>
   </script>
   <!-- FONTS -->
-  
+
   <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <!-- MAIN STYLES -->
   <link rel="stylesheet" type="text/scss" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
