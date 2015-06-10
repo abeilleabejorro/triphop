@@ -1,7 +1,6 @@
 class LinksController < ApplicationController
 
   def hotels
-    binding.pry
     @trip = Trip.find(params["link"]["trip_id"])
     @link = Link.create(urls: params["urls"].join(','))
     @trip.links.push(@link)
