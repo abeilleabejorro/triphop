@@ -16,15 +16,15 @@ $(document).ready(function(){
  
     // Custom JS Init
     Custom.init();
-    Custom.captchaFix();
+    // Custom.captchaFix();
     // when these are uncommented local host won't load 
 
     // // Custom.loadMoreNews();
-    // //Custom.captchaFix();
+    // Custom.captchaFix();
     // //Custom.loadMoreNews();
 
     // when these are uncommented local host won't load 
-    Custom.mobileMenuAnimation();
+    // Custom.mobileMenuAnimation();
     
 });//document ready
 

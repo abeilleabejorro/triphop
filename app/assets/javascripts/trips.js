@@ -1,10 +1,11 @@
 $(document).ready(function(){
+
   inviteMore();
   getMaps();
 });
 
-
 function getMaps(){
+if ($("#trip-edit-page")==![]){
    var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
     var map;
@@ -17,7 +18,7 @@ function getMaps(){
         center: thehome
       };
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-      directionsDisplay.setMap(map);
+       directionsDisplay.setMap(map);
       calcRoute();
     }
 
@@ -36,9 +37,11 @@ function getMaps(){
       });
     }
    google.maps.event.addDomListener(window, 'load', initialize);
+  }
 }
 
 function inviteMore(){
+  if ($("#trip-edit-page")==![]){
   $("#invite").click(function(e){
     if ($("#email1").val()=="" && $("#email2").val()=="" && $("#email2").val()=="" ){
       e.preventDefault();
@@ -51,8 +54,9 @@ function inviteMore(){
   e.preventDefault();
    $(".email-fld:last-child").append('<li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email4"></li>');
                                     
-  });
-}
+    });
+  }
+} 
 
 
 
