@@ -12,12 +12,27 @@ $(document).ready(function(){
     Plugins.knobs(".lbKnob", "#26C6DA");
     Plugins.modalEffects();
 
+
+ 
     //Custom JS Init
     Custom.init();
     // Custom.captchaFix();
     // Custom.loadMoreNews();
+    //Custom.captchaFix();
+    //Custom.loadMoreNews();
     Custom.mobileMenuAnimation();
+    
+});//document ready
 
 
-});
+
+
+
+
+
+
+
+
+
+
 
