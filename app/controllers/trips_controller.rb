@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update]
 before_action :getCars, only: [:show, :edit, :update]
 skip_before_filter :verify_authenticity_token
+helper_method :avatar_url
 # before_action :check_if_invited only: [:show]
 # before_action :check_membership, only: [:show, :edit, :update]
   def home
@@ -115,6 +116,11 @@ private
          @cars = trip.getRentalCar(trip)
       end
     end
+
+  def avatar_url(user)
+    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png"
+  end 
 end
 
 

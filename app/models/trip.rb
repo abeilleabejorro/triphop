@@ -9,7 +9,12 @@ class Trip < ActiveRecord::Base
 	has_many :links
 
 	def invited?
-	self.invited.split(", ")
+	invited = self.invited.split(", ")
+	confirmed = []
+	self.members.each do |member|
+			confirmed << member.email
+		end
+	invited.select {|p| confirmed.include?(p)==false}
 	end 
 
 	def getRentalCar(trip)
