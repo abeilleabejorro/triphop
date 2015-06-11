@@ -24,6 +24,7 @@ skip_before_filter :verify_authenticity_token
 
   def edit
     @link = Link.new
+    @proposed_date = ProposedDate.new
     @trip = Trip.find(params["id"])
   end
 
@@ -46,7 +47,7 @@ skip_before_filter :verify_authenticity_token
   def update
     @trip = Trip.find(params["id"])
       params[:email].each do |email|
-    if email != ""    
+    if email != ""
       if User.find_by(email: email)
         @member = User.find_by(email: email)
         session["member"]=@member
@@ -67,7 +68,7 @@ skip_before_filter :verify_authenticity_token
      @trip = Trip.find(params[:id])
      @trip.destroy
      redirect_to "/users/#{current_user.id}/trips"
-  end 
+  end
 
   def all
     @all ||= self.members
@@ -102,12 +103,12 @@ private
       start_date = start_date_array.insert(0, start_date_array.delete_at(2)).join("/")
       end_date = end_date_array.insert(0, end_date_array.delete_at(2)).join("/")
       formatted_dates={start: start_date, end: end_date}
-   end 
+   end
 
     def getCars
       trip = Trip.find(params["id"])
       # gets car rental if trip haven't started yet
-      if trip.start_date > Date.today 
+      if trip.start_date > Date.today
          @cars = trip.getRentalCar(trip)
       end
     end

@@ -4,13 +4,14 @@ class Trip < ActiveRecord::Base
 	has_and_belongs_to_many :members, :class_name => "User"
   accepts_nested_attributes_for :members
 	has_one :proposed_date
+	has_many :proposed_dates
 	has_many :transportations
   has_many :accomodations
 	has_many :links
 
 	def invited?
 	self.invited.split(", ")
-	end 
+	end
 
 	def getRentalCar(trip)
 		# creates query from params
@@ -25,10 +26,10 @@ class Trip < ActiveRecord::Base
 		#prepare resultsArray
 		return createCarsHatch(results)
 	end
-	 
+
 	def getQueryParams(trip)
 		tdest = trip.origin.gsub(' ','')
-		tstart =  trip.start_date.strftime("%m/%d/%Y")    
+		tstart =  trip.start_date.strftime("%m/%d/%Y")
 		tend = trip.end_date.strftime("%m/%d/%Y")
 		data = "&dest="+tdest+"&startdate="+tstart+"&enddate="+tend+"&pickuptime=10:00&dropofftime=22:30"
 		return data
@@ -55,11 +56,11 @@ class Trip < ActiveRecord::Base
 	def carTypesKey(cars)
 		keyHash = {}
 		cars.each do |car|
-			keyHash[car['CarTypeCode']] = { 
-				name: "#{car['CarTypeName']} Car", 
+			keyHash[car['CarTypeCode']] = {
+				name: "#{car['CarTypeName']} Car",
 				passengers: "#{car['TypicalSeating']}" }
 		end
 		return keyHash
 	end
- 
+
 end

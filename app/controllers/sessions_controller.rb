@@ -21,10 +21,10 @@ class SessionsController < Devise::SessionsController
   end
   private
   def add_user_to_trip(trip, user)
-    @trip.members.push(@user) 
+    @trip.members.push(@user)
     @trip.save
     @user.save
-  end 
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute
