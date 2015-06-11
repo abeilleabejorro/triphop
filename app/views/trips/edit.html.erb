@@ -58,9 +58,11 @@
 		        </div>
             <div> 
              <strong> Invited:</strong> <br>
+        
                 <% @trip.invited?.each do |invitee|%>
                 <%=invitee%> <br>
                 <%end %>
+             
                 </div>
                 <div> 
              <strong> Confirmed:</strong> <br>

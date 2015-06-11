@@ -47,8 +47,8 @@ helper_method :avatar_url
   def update
     @trip = Trip.find(params["id"])
       params[:email].each do |email|
-    if email != ""    
-      if User.find_by(email: email)
+    if email != ""   
+      if User.find_by(email: email) 
         @member = User.find_by(email: email)
         session["member"]=@member
         MyMailer.add_existing_member(@member, @trip).deliver_now
