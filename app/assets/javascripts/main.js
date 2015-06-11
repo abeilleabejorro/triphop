@@ -14,12 +14,16 @@ $(document).ready(function(){
 
 
  
-    //Custom JS Init
+    // Custom JS Init
     Custom.init();
-    // Custom.captchaFix();
-    // Custom.loadMoreNews();
-    //Custom.captchaFix();
-    //Custom.loadMoreNews();
+    Custom.captchaFix();
+    // when these are uncommented local host won't load 
+
+    // // Custom.loadMoreNews();
+    // //Custom.captchaFix();
+    // //Custom.loadMoreNews();
+
+    // when these are uncommented local host won't load 
     Custom.mobileMenuAnimation();
     
 });//document ready
