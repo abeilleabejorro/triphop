@@ -1,6 +1,14 @@
 $(document).ready(function(){
   inviteMore();
   getMaps();
+
+
+  $('.proposed-dates').hide();
+  $('#suggest-date').click(function(){
+    $(this).hide(function(){
+      $('.proposed-dates').show('slow');
+    })
+  })
 });
 
 function getMaps(){
@@ -46,25 +54,18 @@ function inviteMore(){
       e.preventDefault();
       alert("please enter at least one email address!");
     };
-    
+
   });
   $(".add-email").click(function(e){
     //debugger;
   e.preventDefault();
    $(".email-fld:last-child").append('<li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email4"></li>');
-                                    
+
     });
   }
 }
-// function deleteTrip(){ 
-//  if ($(".delete-trip").length>0){
-//   $(".delete-trip").click(function(e){
-//     debugger
-//        e.stopPropagation();
-     
-//     });
-//   }
-// }  
+
+
 
 
 

@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :transportations
 
-  resources :proposed_dates
 
   devise_for :users, :controllers => { registrations: 'registrations', sessions: 'sessions'}
   resources :trips
@@ -12,6 +11,9 @@ Rails.application.routes.draw do
   post 'trips/:id', to: 'trips#update'
 
   post '/links', to: 'links#hotels'
+
+  post '/proposed_dates', to: 'proposed_dates#new_date'
+  resources :proposed_dates
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

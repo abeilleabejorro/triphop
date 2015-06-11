@@ -230,16 +230,20 @@ ul {
 //============================
 //   EDIT
 //============================
-	.edit-board {
-		background-color: $dark;
-		h2 {
-			width: 100%;
-			color: #fff;
-			border-color: $yellow;
-			span {
-				display: block;
-				float: right;
-			}
+
+#dates-box {
+	color: #757575;
+}
+
+.edit-board {
+	background-color: $dark;
+	h2 {
+		width: 100%;
+		color: #fff;
+		border-color: $yellow;
+		span {
+			display: block;
+			float: right;
 		}
 	}
 	.board-bgd {
@@ -299,6 +303,7 @@ ul {
 		}
 
 	}
+}
 
 	.fa-spinner{
 		display: none;
@@ -356,7 +361,7 @@ ul {
 	
 //============================
 //   GOOGLE MAPS CANVAS
-//============================  
+//============================
 
      #map-canvas {
         height: 500px;
@@ -364,7 +369,7 @@ ul {
         margin: 0px;
         padding: 0px;
       }
-     
+
       #panel {
       	display: none;
         // position: absolute;
