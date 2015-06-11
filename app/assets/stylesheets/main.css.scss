@@ -88,7 +88,7 @@ ul {
 .delete-trip {
 	display: block;
 	position: absolute;
-	bottom: 10px;
+	bottom: 0px;
 	right: 25px;
 	width: 25px;
 	height: 25px;
@@ -349,7 +349,8 @@ ul {
 			}
 		}
 		.info-container {
-			height: 70px;
+			height: 100px;
+			padding: 5px 30px;
 		}
 	}
 	

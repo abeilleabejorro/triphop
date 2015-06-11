@@ -64,9 +64,13 @@ skip_before_filter :verify_authenticity_token
   end
 
   def destroy
-     @trip = Trip.find(params[:id])
-     @trip.destroy
-     redirect_to "/users/#{current_user.id}/trips"
+    @trip = Trip.find(params[:id])
+    @id = @trip.id
+    @trip.destroy
+    respond_to do |f|
+      f.js
+    end
+     # redirect_to "/users/#{current_user.id}/trips"
   end 
 
   def all

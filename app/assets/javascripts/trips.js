@@ -4,7 +4,7 @@ $(document).ready(function(){
 });
 
 function getMaps(){
-if ($("#trip-edit-page")!=[]){
+if ($("#trip-edit-page").length>0){
    var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
     var map;
@@ -40,10 +40,8 @@ if ($("#trip-edit-page")!=[]){
 }
 
 function inviteMore(){
-  if ($("#trip-edit-page")!=[]){
-  
+  if ($("#trip-edit-page").length>0){
   $("#invite").click(function(e){
-    
     if ($("#email1").val()=="" && $("#email2").val()=="" && $("#email2").val()=="" ){
       e.preventDefault();
       alert("please enter at least one email address!");
@@ -57,8 +55,16 @@ function inviteMore(){
                                     
     });
   }
-} 
-
+}
+// function deleteTrip(){ 
+//  if ($(".delete-trip").length>0){
+//   $(".delete-trip").click(function(e){
+//     debugger
+//        e.stopPropagation();
+     
+//     });
+//   }
+// }  
 
 
 
