@@ -14,8 +14,8 @@ $(document).ready(function(){
 
     //Custom JS Init
     Custom.init();
-    Custom.captchaFix();
-    Custom.loadMoreNews();
+    // Custom.captchaFix();
+    // Custom.loadMoreNews();
     Custom.mobileMenuAnimation();
 
 

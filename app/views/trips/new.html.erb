@@ -1,3 +1,6 @@
+<head>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
+</head>
 <section class="jumbotron whole-page new-trip">
 	<div class="container">
 		<h1>Ready for a New Adventure?</h1>
@@ -6,4 +9,59 @@
 				<%= render 'form' %>
 		</div>
 	</div>
-</section>
+ 
+  <div id="map-canvas"></div>
+  </section>
+  <script type="text/javascript">
+$(document).ready(function(){
+  debugger
+    //Autocomplete variables
+    var input = document.getElementById('trip_origin');
+    var input1 = document.getElementById('trip_destination');
+    // var searchform = document.getElementById('form1');
+    var place;
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    var autocomplete = new google.maps.places.Autocomplete(input1);
+ 
+    //Google Map variables
+    var map;
+    var marker;
+ 
+    //Add listener to detect autocomplete selection
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        place = autocomplete.getPlace();
+        //console.log(place);
+    });
+ 
+    //Add listener to search
+    searchform.addEventListener("submit", function() {
+        var newlatlong = new google.maps.LatLng(place.geometry.location.lat(),place.geometry.location.lng());
+        map.setCenter(newlatlong);
+        marker.setPosition(newlatlong);
+        map.setZoom(12);
+ 
+    });
+     
+    //Reset the inpout box on click
+    input.addEventListener('click', function(){
+        input.value = "";
+    });
+ 
+    function initialize() {
+      var myLatlng = new google.maps.LatLng(51.517503,-0.133896);
+      var mapOptions = {
+        zoom: 1,
+        center: myLatlng
+      }
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+ 
+      marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: 'Main map'
+      });
+    }
+ 
+    google.maps.event.addDomListener(window, 'load', initialize);
+ });
+</script>
