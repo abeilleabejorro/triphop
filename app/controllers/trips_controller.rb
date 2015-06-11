@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-before_action :require_login, only: [:show, :edit, :update]
+before_action :require_login, only: [:show, :edit, :update, :new]
 before_action :getCars, only: [:show, :edit, :update]
 skip_before_filter :verify_authenticity_token
 # before_action :check_if_invited only: [:show]
