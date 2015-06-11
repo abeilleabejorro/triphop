@@ -41,8 +41,8 @@
                <%#= fields_for :proposed_dates do |proposed_dates_form| %>
                <%= form_for @proposed_date, remote: true, url: {action: :new_date, controller: :proposed_dates}, method: :post do |proposed_dates_form| %>
                    <%= proposed_dates_form.hidden_field :trip_id, value: @trip.id %>
-                   <%= proposed_dates_form.text_field :start, placeholder: "Start Date here", "data-provide": "datepicker" %>
-                   <%= proposed_dates_form.text_field :end, placeholder: "End Date here",  "data-provide": "datepicker" %>
+                   <%= proposed_dates_form.text_field :start, placeholder: "Start Date here", "data-provide" => "datepicker" %>
+                   <%= proposed_dates_form.text_field :end, placeholder: "End Date here",  "data-provide" => "datepicker" %>
 
                    <%= proposed_dates_form.submit  class: 'btn btn-primary' %>
                <% end %>
