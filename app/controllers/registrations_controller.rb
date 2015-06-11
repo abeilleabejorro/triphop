@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
     if params["id"]
       # binding.pry
       @trip = Trip.find(params["id"].to_i)
-      session['path']="/trips/#{params["id"]}"
+      session['path']="/trips/#{params["id"]}/edit"
     end
     #if they show up with trip id in params, session['path']=path
     # @user = User.new
@@ -21,7 +21,9 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.create(sign_up_params)
     sign_in(@user)
 
-    if session["path"]
+    if session["path"] == "/trips/new"
+      redirect_to new_trip_path
+    elsif
       @trip = Trip.find(session["path"].split("/")[2].to_i)
       add_user_to_trip(@trip, @user)
       # @trip.members.push(@user) 
