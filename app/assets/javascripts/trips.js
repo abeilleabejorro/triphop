@@ -41,9 +41,9 @@ if ($("#trip-edit-page")!=[]){
 
 function inviteMore(){
   if ($("#trip-edit-page")!=[]){
-  debugger
+  
   $("#invite").click(function(e){
-    debugger
+    
     if ($("#email1").val()=="" && $("#email2").val()=="" && $("#email2").val()=="" ){
       e.preventDefault();
       alert("please enter at least one email address!");

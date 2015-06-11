@@ -21,15 +21,17 @@
   		<% @trips.each do |trip| %>
 				<div class="item">
           <div class="profile-circle fadeIn wow" data-wow-delay="0.2s">
-          	 <h3><%=link_to "Delete",  trip_path(trip), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></h3>
+          	 <h3><%=link_to "",  trip_path(trip), class: 'delete-trip', method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></h3>
             <div class="pic-container">
               <a href="/trips/<%=trip.id%>/edit">
                 <%= image_tag "pics/boston.jpg", :alt => "Trip Photo" %>
               </a>
           	</div>
-            <h3><%= link_to trip.name, edit_trip_path(trip) %></h3>
-            <h4><a href="/trips/<%=trip.id%>/edit"><%= trip.origin %> - <%= trip.destination %></a></h4>
-            <p class="text-block"><%= trip.description %></p>
+            <div class='info-container'>
+              <h3><%= link_to trip.name, edit_trip_path(trip) %></h3>
+              <h4><a href="/trips/<%=trip.id%>/edit"><%= trip.origin %> - <%= trip.destination %></a></h4>
+              <p class="text-block"><%= trip.description %></p>
+            </div>
           </div><!--profile-circle -->
         </div><!-- item -->
       <% end %>
