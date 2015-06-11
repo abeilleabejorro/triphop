@@ -10,7 +10,7 @@ class SessionsController < Devise::SessionsController
     if session['path']
       @trip = Trip.find(session["path"].split("/")[2].to_i)
       #to do: check to make sure they're not already a member
-      add_user_to_trip(trip, current_user)
+      add_user_to_trip(@trip, current_user)
       # @trip.members << current_user
       # @trip.save
       # current_user.save
