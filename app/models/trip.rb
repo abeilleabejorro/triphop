@@ -17,6 +17,14 @@ class Trip < ActiveRecord::Base
 		end
 	invited.select {|p| confirmed.include?(p)==false}
 	end 
+	
+	def confirmed
+		confirmed ||= []
+		self.members.each do |member|
+			confirmed << member.email
+		end
+		confirmed
+	end 
 
 
 	def getRentalCar(trip)
