@@ -18,7 +18,22 @@
 								<li><i class="fa fa-calendar"></i> <%= @trip.start_date %><!-- @trip.proposed_date.start--> - <%= @trip.end_date %><!-- @trip.proposed_date.end --></li>
 							</ul>
 					  </div>
-					</div><!--c1 -->
+
+            <!-- add proposed date -->
+              <span><button id="suggest-date" class="btn">Suggest a new Date</button></span>
+              <div class="proposed-dates" >
+
+               <%= fields_for :proposed_dates do |proposed_dates_form| %>
+                   <%= proposed_dates_form.text_field :start, placeholder: "Start Date here", "data-provide": "datepicker" %>
+                   <%= proposed_dates_form.text_field :end, placeholder: "End Date here",  "data-provide": "datepicker" %>
+
+                   <%= proposed_dates_form.submit  class: 'btn btn-primary' %>
+               <% end %>
+
+             </div>
+            <!-- end -->
+          </div><!--c1 -->
+
 				</div>
 				<!-- MEMBERS -->
 				<div class="panel panel-default">
@@ -27,7 +42,7 @@
 				      <h4 class="panel-title"><i class="fa fa-users"></i>Who is Coming?</h4>
 				    </div>
 				  </a>
-		      <div id="members" class="panel-collapse collapse"> 
+		      <div id="members" class="panel-collapse collapse">
 		        <div class="panel-body">
 		          <h5 class="title-sm-v2">Invite your Friends:</h5>
 		           <i class="fa fa-spinner fa-spin fa-5x fa-align-center"></i>
@@ -47,21 +62,21 @@
                   <li><span class="pic-thumb"><i class="fa fa-user-plus"></i></span></i>
                   <a href="/" class="add-email">Invite More Friends</a></li>
 							    	<li class="col-md-6">
-						    
+
                 <input type="submit" class="btn btn-primary" id="invite"></li>
                 </fieldset>
                 </form>
-              
+
 							  </ul>
 							</div>
 		        </div>
-            <div> 
+            <div>
              <strong> Invited:</strong> <br>
                 <% @trip.invited?.each do |invitee|%>
                 <%=invitee%> <br>
                 <%end %>
                 </div>
-                <div> 
+                <div>
              <strong> Confirmed:</strong> <br>
                 <% @trip.members.each do |member|%>
                 <%=member.email%> <br>
@@ -108,7 +123,7 @@
         						<h4><%= link_to 'Rent It!', car[:link], target: "new" %></h4>
         					</div>
         				</li>
-        				
+
               </ul>
               <% end %> <% else %>
               <h3>You can't travel to the past!</h3>
@@ -142,7 +157,7 @@
           </div><!--members-->
 		      <div id="accomodation" class="panel-collapse collapse">
 		        <div class="panel-body">
-		          
+
 		         </div>
 		      </div>
 		  	</div>
@@ -168,7 +183,7 @@
 
 		</section>
 
-    <!-- GOOGLEMAPS -->  
+    <!-- GOOGLEMAPS -->
     <section class="board-bgd col-md-8">
       <div id="panel">
         <form>
@@ -178,7 +193,7 @@
            <input id="end" type="text" name="end" value="<%= @trip.destination%>">
         </form>
       </div>
-      <div id="map-canvas"></div>  
+      <div id="map-canvas"></div>
     </section>
 	</div>
 </section>

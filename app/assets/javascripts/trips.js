@@ -1,6 +1,15 @@
 $(document).ready(function(){
   inviteMore();
   getMaps();
+
+
+  $('.proposed-dates').hide();
+  $('#suggest-date').click(function(){
+    $(this).hide(function(){
+      debugger;
+      $('.proposed-dates').show('slow');
+    })
+  })
 });
 
 function getMaps(){
@@ -41,23 +50,21 @@ if ($("#trip-edit-page")!=[]){
 
 function inviteMore(){
   if ($("#trip-edit-page")!=[]){
-  debugger
   $("#invite").click(function(e){
-    debugger
     if ($("#email1").val()=="" && $("#email2").val()=="" && $("#email2").val()=="" ){
       e.preventDefault();
       alert("please enter at least one email address!");
     };
-    
+
   });
   $(".add-email").click(function(e){
     //debugger;
   e.preventDefault();
    $(".email-fld:last-child").append('<li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email4"></li>');
-                                    
+
     });
   }
-} 
+}
 
 
 
