@@ -67,7 +67,8 @@
 		           <i class="fa fa-spinner fa-spin fa-5x fa-align-center"></i>
               <div class="container panel">
 		          	<ul>
-							  <form action="/trips/<%=@trip.id%>" method="POST">
+							  
+                <form action="/trips/<%=@trip.id%>" method="POST" data-remote="true">
                 <fieldset>
                 <li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email1">
                 </li>
@@ -90,7 +91,7 @@
 		        </div>
 
             <div class="container">
-              <div>
+              <div id="invited">
                <strong> Invited:</strong> <br>
                   <% @trip.invited?.each do |invitee|%>
                   <%=invitee%> <br>
