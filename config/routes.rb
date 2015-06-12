@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :group_costs
+
   resources :accomodations
 
   resources :transportations
@@ -13,6 +15,9 @@ Rails.application.routes.draw do
   post '/links', to: 'links#hotels'
 
   post '/proposed_dates', to: 'proposed_dates#new_date'
+
+  post '/group_costs', to: 'group_costs#new_item'
+
   resources :proposed_dates
 
   # The priority is based upon order of creation: first created -> highest priority.
