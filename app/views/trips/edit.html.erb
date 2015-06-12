@@ -62,7 +62,7 @@
 		           <i class="fa fa-spinner fa-spin fa-5x fa-align-center"></i>
               <div class="container panel">
 		          	<ul>
-							  
+
                 <form action="/trips/<%=@trip.id%>" method="POST" data-remote="true">
 		          	<ul id="friendsList">
 							  <form action="/trips/<%=@trip.id%>" method="POST">
@@ -255,9 +255,9 @@
 
 <!-- start of airbnb listings -->
 <section class=" container">
-  <% if @trip.links.count != 0 %>
+  <%# if @trip.links.count != 0 %>
     <h2 class="lg-title">Accomodations</h2>
-  <% end %>
+  <%# end %>
 
  <div class="cbp-panel">
     <!-- filter -->
@@ -276,7 +276,7 @@
 
               <% arr_links = link["urls"].split(',') %>
               <% arr_links.each do |url| %>
-               
+
                 <div class="col-md-4">
                   <a href="<%= url %>" class="embedly-card"></a>
                 </div>
