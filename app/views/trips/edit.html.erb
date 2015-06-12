@@ -20,23 +20,11 @@
 							</ul>
 					  </div>
 
-            <!-- proposed dates -->
-            <div id="dates-box">
-             <!--  <h4>Proposed Dates</h4> -->
-
-              <% @trip.proposed_dates.each do |date| %>
-                <% if @trip.proposed_dates.first == date %>
-
-                <% else %>
-                  <li><%= date.start %>, <%= date.end %> by <%= User.find(date.user_id).name %></li>
-                <% end %>
-              <% end %>
-            </div>
-            <!-- end -->
+            
 
             <!-- add proposed date -->
               <button id="suggest-date" class="btn">Suggest a new Date</button>
-              <div id="propPanel" class="proposed-dates" >
+              <div  id="propPanel"class="proposed-dates" >
 
                <%#= fields_for :proposed_dates do |proposed_dates_form| %>
                <%= form_for @proposed_date, remote: true, url: {action: :new_date, controller: :proposed_dates}, method: :post do |proposed_dates_form| %>
@@ -46,8 +34,20 @@
 
                    <%= proposed_dates_form.submit  class: 'btn btn-primary' %>
                <% end %>
-
              </div>
+            <!-- end -->
+            <!-- proposed dates -->
+            <ul id="dates-box" class="sub-panel">
+             <!--  <h4>Proposed Dates</h4> -->
+                <li>Suggested Dates:</li>
+              <% @trip.proposed_dates.each do |date| %>
+                <% if @trip.proposed_dates.first == date %>
+
+                <% else %>
+                  <li><%= date.start %>, <%= date.end %> by <%= User.find(date.user_id).name %></li>
+                <% end %>
+              <% end %>
+            </ul>
             <!-- end -->
           </div><!--c1 -->
 
@@ -64,7 +64,7 @@
 		          <h5 class="title-sm-v2">Invite your Friends:</h5>
 		           <i class="fa fa-spinner fa-spin fa-5x fa-align-center"></i>
               <div class="container panel">
-		          	<ul>
+		          	<ul id="friendsList">
 							  <form action="/trips/<%=@trip.id%>" method="POST">
                 <fieldset>
                 <li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email1">
@@ -75,12 +75,11 @@
                  <li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email3"></li>
                 </fieldset>
                 <fieldset>
-							    <!-- <li><span class="pic-thumb"><i class="fa fa-user-plus"></i></span></i><%= link_to 'Invite More', id: "add-email", :path => '#' %></li> -->
                   <li><span class="pic-thumb"><i class="fa fa-user-plus"></i></span></i>
                   <a href="/" class="add-email">Invite More Friends</a></li>
 							    	<li class="col-md-6">
 
-                <input type="submit" class="btn btn-primary" id="invite"></li>
+                <input type="submit" class="btn btn-primary" id="invite" remote="true"></li>
                 </fieldset>
                 </form>
 
@@ -88,14 +87,14 @@
 							</div>
 		        </div>
             <div class="container">
-              <div>
-               <strong> Invited:</strong> <br>
+              <div class="sub-panel">
+               <em> Invited:</em> <br>
                   <% @trip.invited?.each do |invitee|%>
                   <%=invitee%> <br>
                   <%end %>
               </div>
-              <div>
-               <strong> Confirmed:</strong> <br>
+              <div class="sub-panel">
+               <em> Confirmed:</em> <br>
                   <% @trip.members.each do |member|%>
                   <%=member.email%> <br>
                   <%end %>
