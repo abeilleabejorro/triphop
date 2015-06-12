@@ -9,6 +9,7 @@ class SessionsController < Devise::SessionsController
 
     if session['path'] == "/trips/new"
       redirect_to new_trip_path
+      # was just elsif 
     elsif (session['path']!=nil) 
       @trip = Trip.find(session["path"].split("/")[2].to_i)
       add_user_to_trip(@trip, current_user)
@@ -20,6 +21,7 @@ class SessionsController < Devise::SessionsController
     respond_with resource, location: after_sign_in_path_for(resource)
     end
   end
+
   private
   def add_user_to_trip(trip, user)
     if !(trip.confirmed.include?(user))

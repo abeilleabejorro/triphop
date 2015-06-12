@@ -59,6 +59,8 @@ skip_before_filter :verify_authenticity_token
       end
       @trip.invited << email+", "
       @trip.save 
+    else 
+      flash[:notice] = "#{email} has already been invited"
     end
    
   end
