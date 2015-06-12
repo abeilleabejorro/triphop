@@ -61,6 +61,9 @@
 		          <h5 class="title-sm-v2">Invite your Friends:</h5>
 		           <i class="fa fa-spinner fa-spin fa-5x fa-align-center"></i>
               <div class="container panel">
+		          	<ul>
+							  
+                <form action="/trips/<%=@trip.id%>" method="POST" data-remote="true">
 		          	<ul id="friendsList">
 							  <form action="/trips/<%=@trip.id%>" method="POST">
                 <fieldset>
@@ -85,6 +88,8 @@
 		        </div>
 
             <div class="container">
+              <div id="invited">
+               <strong> Invited:</strong> <br>
               <div class="sub-panel">
                <em> Invited:</em> <br>
                   <% @trip.invited?.each do |invitee|%>
@@ -160,7 +165,7 @@
               <h5 class="title-sm-v2">Add Your AirBNB locations:</h5>
               <div class="container panel">
                 <ul>
-                <%= form_for @link, url: {action: :hotels, controller: :links}, method: :post do |f| %>
+                <%= form_for @link, remote: true, url: {action: :hotels, controller: :links}, method: :post do |f| %>
                     <li><%= f.label :links %>:</li>
                     <%= f.hidden_field :trip_id, value: @trip.id %>
                     <li><span class="pic-thumb"><i class="fa fa-thumb-tack"></i></span><%= f.text_field :urls, name: "urls[]" %></li>
@@ -264,12 +269,14 @@
     </div> -->
 
     <!-- content -->
-       <div class="row">
+       <div class="row" id="hotel-row">
 
         <% if @trip.links != nil %>
           <% @trip.links.each do |link| %>
+
               <% arr_links = link["urls"].split(',') %>
               <% arr_links.each do |url| %>
+               
                 <div class="col-md-4">
                   <a href="<%= url %>" class="embedly-card"></a>
                 </div>

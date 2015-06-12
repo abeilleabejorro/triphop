@@ -1,0 +1,9 @@
+// debugger;
+// var links = <%= @links.first %>;
+<% @links.each do |link| %>
+  <% if link != "" %>
+    $('#hotel-row').append($('<div class="col-md-4"><a href="<%= link %>" class="embedly-card"></a></div>'))
+    
+  <% end %>
+<% end %>
+
