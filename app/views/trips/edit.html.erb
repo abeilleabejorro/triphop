@@ -19,26 +19,9 @@
 								<li><i class="fa fa-calendar"></i> <%= @trip.start_date %><!-- @trip.proposed_date.start--> - <%= @trip.end_date %><!-- @trip.proposed_date.end --></li>
 							</ul>
 					  </div>
-
-            <!-- proposed dates -->
-            <div id="dates-box">
-              <!-- <h4>Proposed Dates</h4> -->
-              <% if @trip.proposed_dates.count > 1 %>
-                <h4>Proposed Dates</h4>
-                <% @trip.proposed_dates.each do |date| %>
-                  <% if @trip.proposed_dates.first == date %>
-
-                  <% else %>
-                    <li><%= date.start.strftime("%m/%d/%Y") %> to <%= date.end.strftime("%m/%d/%Y") %> by <%= User.find(date.user_id).name %></li>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-            <!-- end -->
-
             <!-- add proposed date -->
               <button id="suggest-date" class="btn">Suggest a new Date</button>
-              <div id="propPanel" class="proposed-dates" >
+              <div  id="propPanel"class="proposed-dates" >
 
                <%#= fields_for :proposed_dates do |proposed_dates_form| %>
                <%= form_for @proposed_date, remote: true, url: {action: :new_date, controller: :proposed_dates}, method: :post do |proposed_dates_form| %>
@@ -48,8 +31,20 @@
 
                    <%= proposed_dates_form.submit  class: 'btn btn-primary' %>
                <% end %>
-
              </div>
+            <!-- end -->
+            <!-- proposed dates -->
+            <ul id="dates-box" class="sub-panel">
+             <!--  <h4>Proposed Dates</h4> -->
+                <li>Suggested Dates:</li>
+              <% @trip.proposed_dates.each do |date| %>
+                <% if @trip.proposed_dates.first == date %>
+
+                <% else %>
+                  <li><%= date.start %>, <%= date.end %> by <%= User.find(date.user_id).name %></li>
+                <% end %>
+              <% end %>
+            </ul>
             <!-- end -->
           </div><!--c1 -->
 
@@ -69,6 +64,8 @@
 		          	<ul>
 							  
                 <form action="/trips/<%=@trip.id%>" method="POST" data-remote="true">
+		          	<ul id="friendsList">
+							  <form action="/trips/<%=@trip.id%>" method="POST">
                 <fieldset>
                 <li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email1">
                 </li>
@@ -82,7 +79,7 @@
                   <a href="/" class="add-email">Invite More Friends</a></li>
 							    	<li class="col-md-6">
 
-                <input type="submit" class="btn btn-primary" id="invite"></li>
+                <input type="submit" class="btn btn-primary" id="invite" remote="true"></li>
                 </fieldset>
                 </form>
 
@@ -93,12 +90,14 @@
             <div class="container">
               <div id="invited">
                <strong> Invited:</strong> <br>
+              <div class="sub-panel">
+               <em> Invited:</em> <br>
                   <% @trip.invited?.each do |invitee|%>
                   <%=invitee%> <br>
                   <%end %>
               </div>
-              <div>
-               <strong> Confirmed:</strong> <br>
+              <div class="sub-panel">
+               <em> Confirmed:</em> <br>
                   <% @trip.members.each do |member|%>
                   <%=member.email%> <br>
                   <%end %>
@@ -166,7 +165,7 @@
               <h5 class="title-sm-v2">Add Your AirBNB locations:</h5>
               <div class="container panel">
                 <ul>
-                <%= form_for @link, url: {action: :hotels, controller: :links}, method: :post do |f| %>
+                <%= form_for @link, remote: true, url: {action: :hotels, controller: :links}, method: :post do |f| %>
                     <li><%= f.label :links %>:</li>
                     <%= f.hidden_field :trip_id, value: @trip.id %>
                     <li><span class="pic-thumb"><i class="fa fa-thumb-tack"></i></span><%= f.text_field :urls, name: "urls[]" %></li>
@@ -237,12 +236,14 @@
     </div> -->
 
     <!-- content -->
-       <div class="row">
+       <div class="row" id="hotel-row">
 
         <% if @trip.links != nil %>
           <% @trip.links.each do |link| %>
+
               <% arr_links = link["urls"].split(',') %>
               <% arr_links.each do |url| %>
+               
                 <div class="col-md-4">
                   <a href="<%= url %>" class="embedly-card"></a>
                 </div>
