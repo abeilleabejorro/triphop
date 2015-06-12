@@ -22,7 +22,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     if session["path"] == "/trips/new"
       redirect_to new_trip_path
-    elsif
+    elsif (session['path']!=nil)
       @trip = Trip.find(session["path"].split("/")[2].to_i)
       add_user_to_trip(@trip, @user)
       # @trip.members.push(@user)
