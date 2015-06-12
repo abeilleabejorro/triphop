@@ -8,6 +8,7 @@ class Trip < ActiveRecord::Base
 	has_many :transportations
   has_many :accomodations
 	has_many :links
+	has_many :group_costs
 
 	def invited?
 	invited = self.invited.split(", ")
@@ -16,15 +17,15 @@ class Trip < ActiveRecord::Base
 			confirmed << member.email
 		end
 	invited.select {|p| confirmed.include?(p)==false}
-	end 
-	
+	end
+
 	def confirmed
 		confirmed ||= []
 		self.members.each do |member|
 			confirmed << member.email
 		end
 		confirmed
-	end 
+	end
 
 
 	def getRentalCar(trip)
