@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20150611200109) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "admin_id"
+    t.text     "invited"
     t.date     "start_date"
     t.date     "end_date"
-    t.text     "invited"
   end
 
   create_table "trips_users", force: :cascade do |t|

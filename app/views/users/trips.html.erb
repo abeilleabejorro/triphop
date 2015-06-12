@@ -17,8 +17,8 @@
     <h2 class="lg-title">My Trips</h2>
     <div class="space-md"></div>
     <div id="teamSlider" class="owl-carousel">
-    
-  		<% @trips.each do |trip| %>
+
+  		<% @trips.reverse.each do |trip| %>
 				<div class="item" id="<%=trip.id%>">
           <div class="profile-circle fadeIn wow" data-wow-delay="0.2s">
           	 <h3><%=link_to "",  trip_path(trip), class: 'delete-trip', method: :delete, remote: true  %></h3>

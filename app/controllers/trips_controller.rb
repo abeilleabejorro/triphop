@@ -2,7 +2,7 @@ class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update, :new]
 before_action :getCars, only: [:show, :edit, :update]
 skip_before_filter :verify_authenticity_token
-helper_method :avatar_url
+
 # before_action :check_if_invited only: [:show]
 # before_action :check_membership, only: [:show, :edit, :update]
   def home
@@ -48,7 +48,7 @@ helper_method :avatar_url
   def update
     @trip = Trip.find(params["id"])
       params[:email].each do |email|
-    if email != ""
+    if email != "" && not_invited(email, @trip)
       if User.find_by(email: email)
         @member = User.find_by(email: email)
         session["member"]=@member
@@ -58,11 +58,12 @@ helper_method :avatar_url
         MyMailer.add_new_member(@member, @trip).deliver_now
       end
       @trip.invited << email+", "
-      @trip.save
+      @trip.save 
     end
+   
   end
-     # add @member's email to invited array
     redirect_to edit_trip_path(@trip)
+    # add @member's email to invited array
   end
 
   def destroy
@@ -118,10 +119,14 @@ private
       end
     end
 
-  def avatar_url(user)
-    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-    "http://gravatar.com/avatar/#{gravatar_id}.png"
-  end 
+    def not_invited(email, trip)
+      if (trip.invited?.include?(email) || trip.confirmed.include?(email))
+        false
+      else
+        true
+      end
+    end
+    
 end
 
 
