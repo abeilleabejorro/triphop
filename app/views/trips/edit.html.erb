@@ -19,9 +19,6 @@
 								<li><i class="fa fa-calendar"></i> <%= @trip.start_date %><!-- @trip.proposed_date.start--> - <%= @trip.end_date %><!-- @trip.proposed_date.end --></li>
 							</ul>
 					  </div>
-
-            
-
             <!-- add proposed date -->
               <button id="suggest-date" class="btn">Suggest a new Date</button>
               <div  id="propPanel"class="proposed-dates" >
@@ -29,8 +26,8 @@
                <%#= fields_for :proposed_dates do |proposed_dates_form| %>
                <%= form_for @proposed_date, remote: true, url: {action: :new_date, controller: :proposed_dates}, method: :post do |proposed_dates_form| %>
                    <%= proposed_dates_form.hidden_field :trip_id, value: @trip.id %>
-                   <%= proposed_dates_form.text_field :start, placeholder: "Start Date here", "data-provide": "datepicker" %>
-                   <%= proposed_dates_form.text_field :end, placeholder: "End Date here",  "data-provide": "datepicker" %>
+                   <%= proposed_dates_form.text_field :start, placeholder: "Start Date here", "data-provide" => "datepicker" %>
+                   <%= proposed_dates_form.text_field :end, placeholder: "End Date here",  "data-provide" => "datepicker" %>
 
                    <%= proposed_dates_form.submit  class: 'btn btn-primary' %>
                <% end %>
@@ -86,6 +83,7 @@
 							  </ul>
 							</div>
 		        </div>
+
             <div class="container">
               <div class="sub-panel">
                <em> Invited:</em> <br>
@@ -100,6 +98,7 @@
                   <%end %>
               </div>
             </div>
+
 		      </div><!--members-->
 	  		</div><!--panel -->
 	  		<!-- TRANSPORTATION -->
@@ -218,16 +217,18 @@
 
 <!-- start of airbnb listings -->
 <section class="section-xlg container">
-  <h2 class="lg-title">Accomodations</h2>
+  <% if @trip.links.count != 0 %>
+    <h2 class="lg-title">Accomodations</h2>
+  <% end %>
 
  <div class="cbp-panel">
     <!-- filter -->
-    <div id="filters-container" class="cbp-l-filters-work filter-tabs">
+<!--     <div id="filters-container" class="cbp-l-filters-work filter-tabs">
       <div data-filter="*" class="cbp-filter-item cbp-filter-item-active">SHOW ALL</div>
       <div data-filter=".identity" class="cbp-filter-item">IDENTITY<div class="cbp-filter-counter">3</div></div><div data-filter=".web-design" class="cbp-filter-item">WEB DESIGN<div class="cbp-filter-counter">4</div></div>
       <div data-filter=".graphic" class="cbp-filter-item">GRAPHIC<div class="cbp-filter-counter">2</div></div>
       <div data-filter=".logos" class="cbp-filter-item">LOGO<div class="cbp-filter-counter">2</div></div>
-    </div>
+    </div> -->
 
     <!-- content -->
        <div class="row">

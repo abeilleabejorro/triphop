@@ -2,7 +2,7 @@ class TripsController < ApplicationController
 before_action :require_login, only: [:show, :edit, :update, :new]
 before_action :getCars, only: [:show, :edit, :update]
 skip_before_filter :verify_authenticity_token
-helper_method :avatar_url
+
 # before_action :check_if_invited only: [:show]
 # before_action :check_membership, only: [:show, :edit, :update]
   def home
@@ -38,6 +38,10 @@ helper_method :avatar_url
     # relate and save proposed_dates
     @dates = ProposedDate.create(reformat_dates)
     @dates.update(trip_id:  @trip.id)
+
+    @dates.user_id = current_user.id
+    @dates.save
+
     @trip.update(start_date: @dates.start)
     @trip.update(end_date: @dates.end)
     @trip.save
@@ -48,7 +52,7 @@ helper_method :avatar_url
   def update
     @trip = Trip.find(params["id"])
       params[:email].each do |email|
-    if email != ""
+    if email != "" && not_invited(email, @trip)
       if User.find_by(email: email)
         @member = User.find_by(email: email)
         session["member"]=@member
@@ -60,9 +64,10 @@ helper_method :avatar_url
       @trip.invited << email+", "
       @trip.save
     end
+
   end
-     # add @member's email to invited array
     redirect_to edit_trip_path(@trip)
+    # add @member's email to invited array
   end
 
   def destroy
@@ -73,7 +78,7 @@ helper_method :avatar_url
       f.js
     end
      # redirect_to "/users/#{current_user.id}/trips"
-  end 
+  end
 
   def all
     @all ||= self.members
@@ -87,7 +92,6 @@ private
     # trips/11/
       unless signed_in?
         #if you're not signed in, check if user is a member (in database)
-        # binding.pry
         flash[:error] = "You must be logged in to access this section"
         session["path"]=request.path
         redirect_to new_user_session_path
@@ -118,10 +122,14 @@ private
       end
     end
 
-  def avatar_url(user)
-    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-    "http://gravatar.com/avatar/#{gravatar_id}.png"
-  end 
+    def not_invited(email, trip)
+      if (trip.invited?.include?(email) || trip.confirmed.include?(email))
+        false
+      else
+        true
+      end
+    end
+
 end
 
 

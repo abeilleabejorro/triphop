@@ -58,12 +58,9 @@ function inviteMore(){
 
   });
   $(".add-email").click(function(e){
-    //debugger;
-
-  e.preventDefault();
-
-  var lastChild = $(".email-fld");
-  lastChild.parent().append('<li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email4"></li>');
+    e.preventDefault();
+    var lastChild = $(".email-fld");
+    lastChild.parent().append('<li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email4"></li>');
 
     });
   }
