@@ -48,12 +48,10 @@ ActiveRecord::Schema.define(version: 20150612162956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "trip_id"
-    t.integer  "user_id_id"
     t.integer  "user_id"
   end
 
   add_index "proposed_dates", ["user_id"], name: "index_proposed_dates_on_user_id"
-  add_index "proposed_dates", ["user_id_id"], name: "index_proposed_dates_on_user_id_id"
 
   create_table "transportations", force: :cascade do |t|
     t.string   "type"
@@ -69,9 +67,9 @@ ActiveRecord::Schema.define(version: 20150612162956) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "admin_id"
+    t.text     "invited"
     t.date     "start_date"
     t.date     "end_date"
-    t.text     "invited"
   end
 
   create_table "trips_users", force: :cascade do |t|
@@ -105,7 +103,6 @@ ActiveRecord::Schema.define(version: 20150612162956) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
-    t.string   "links"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
