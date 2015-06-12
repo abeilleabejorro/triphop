@@ -7,8 +7,6 @@ class ProposedDatesController < ApplicationController
     @dates.user_id = current_user.id
     @dates.save
 
-    binding.pry
-
     @start = @dates.start.strftime("%m/%d/%Y")
     @end = @dates.end.strftime("%m/%d/%Y")
     @user = current_user.name

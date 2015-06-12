@@ -38,6 +38,10 @@ skip_before_filter :verify_authenticity_token
     # relate and save proposed_dates
     @dates = ProposedDate.create(reformat_dates)
     @dates.update(trip_id:  @trip.id)
+
+    @dates.user_id = current_user.id
+    @dates.save
+
     @trip.update(start_date: @dates.start)
     @trip.update(end_date: @dates.end)
     @trip.save
@@ -58,9 +62,9 @@ skip_before_filter :verify_authenticity_token
         MyMailer.add_new_member(@member, @trip).deliver_now
       end
       @trip.invited << email+", "
-      @trip.save 
+      @trip.save
     end
-   
+
   end
     redirect_to edit_trip_path(@trip)
     # add @member's email to invited array
@@ -74,7 +78,7 @@ skip_before_filter :verify_authenticity_token
       f.js
     end
      # redirect_to "/users/#{current_user.id}/trips"
-  end 
+  end
 
   def all
     @all ||= self.members
@@ -126,7 +130,7 @@ private
         true
       end
     end
-    
+
 end
 
 
