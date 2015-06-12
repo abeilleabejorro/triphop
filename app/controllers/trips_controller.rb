@@ -26,6 +26,7 @@ skip_before_filter :verify_authenticity_token
   def edit
     @link = Link.new
     @proposed_date = ProposedDate.new
+    @group_cost = GroupCost.new
     @trip = Trip.find(params["id"])
   end
 
@@ -61,6 +62,7 @@ skip_before_filter :verify_authenticity_token
     @trip = Trip.find(params["id"])
       params[:email].each do |email|
     if email != "" && not_invited(email, @trip)
+        @email = email
       if User.find_by(email: email)
         @member = User.find_by(email: email)
         session["member"]=@member
@@ -70,13 +72,14 @@ skip_before_filter :verify_authenticity_token
         MyMailer.add_new_member(@member, @trip).deliver_now
       end
       @trip.invited << email+", "
-      @trip.save 
-    else 
-      flash[:notice] = "#{email} has already been invited"
+      @trip.save
+    # else
+      # flash[:notice] = "#{email} has already been invited"
     end
 
   end
-    redirect_to edit_trip_path(@trip)
+
+
     # add @member's email to invited array
   end
 
