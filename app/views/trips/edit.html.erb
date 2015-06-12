@@ -61,6 +61,9 @@
 		          <h5 class="title-sm-v2">Invite your Friends:</h5>
 		           <i class="fa fa-spinner fa-spin fa-5x fa-align-center"></i>
               <div class="container panel">
+		          	<ul>
+							  
+                <form action="/trips/<%=@trip.id%>" method="POST" data-remote="true">
 		          	<ul id="friendsList">
 							  <form action="/trips/<%=@trip.id%>" method="POST">
                 <fieldset>
@@ -85,6 +88,8 @@
 		        </div>
 
             <div class="container">
+              <div id="invited">
+               <strong> Invited:</strong> <br>
               <div class="sub-panel">
                <em> Invited:</em> <br>
                   <% @trip.invited?.each do |invitee|%>
@@ -182,14 +187,47 @@
 				<div class="panel panel-default">
 		      <a data-toggle="collapse" data-parent="#accordion" href="#items">
 	          <div class="panel-heading">
-	            <h4 class="panel-title"><i class="fa fa-list"></i>Things to Bring</h4>
+	            <h4 class="panel-title"><i class="fa fa-list"></i>Group Costs</h4>
 	          </div>
 		      </a>
 		      <div id="items" class="panel-collapse collapse">
 		        <div class="panel-body">
-		          <h5 class="title-sm-v2">Anim pariatur cliche, enim eiusmod high life?</h5>
-		         </div>
-		      </div>
+              <h5 class="title-sm-v2">Add Any Items You Paid for!</h5>
+              <div class="container panel">
+                <ul>
+                <%= form_for @group_cost, remote: true, url: {controller: :group_costs}, method: :post do |f| %>
+                    <li><%= f.label :costs %>:</li>
+                    <%= f.hidden_field :trip_id, value: @trip.id %>
+                    <li><span class="pic-thumb"><i class="fa fa-thumb-tack"></i></span><%= f.text_field :item, name: "cost[item]", placeholder: "Item" %></li>
+                    <li><span class="pic-thumb"><i class="fa fa-thumb-tack"></i></span><%= f.text_field :price, name: "cost[price]", placeholder: "Price" %></li>
+                    <li class="col-md-6"><%= f.submit 'Save Cost', :class => 'btn btn-primary' %></li>
+                <% end %>
+                </ul>
+              </div>
+            </div>
+
+            <div class="container">
+              <div class="sub-panel">
+               <em> Group Costs</em> <br>
+               <% if @trip.group_costs.count >0 %>
+                  <% @trip.group_costs.each do |cost| %>
+                    <% user = User.find(cost.user_id) %>
+                    <%= cost.item%> : $<%= cost.price %> (<%= user.name %>) <br>
+                  <%end %>
+
+                  <br>
+
+                  <% new_costs = @trip.group_costs.collect { |cost| cost.price }  %>
+                  <% new_total = new_costs.inject(:+) %>
+                  <span style="color:black">Total Cost : <%= new_total %></span> <br>
+                  <span style="color:black">Total Per Person : <%= new_total / @trip.members.count %></span>
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+
+
 		  	</div>
         <div class="panel panel-default">
           <div class="panel-heading">
