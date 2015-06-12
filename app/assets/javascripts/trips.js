@@ -57,7 +57,6 @@ function inviteMore(){
 
   });
   $(".add-email").click(function(e){
-    //debugger;
   e.preventDefault();
    $(".email-fld:last-child").append('<li class="email-fld"><span class="pic-thumb"><i class="fa fa-user"></i></span><input type="email" name="email[]" placeholder="friend@friend.com" id="email4"></li>');
 

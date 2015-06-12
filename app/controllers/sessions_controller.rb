@@ -9,7 +9,7 @@ class SessionsController < Devise::SessionsController
 
     if session['path'] == "/trips/new"
       redirect_to new_trip_path
-    elsif (session['path']!=nil) 
+    elsif (session['path']!=nil)
       @trip = Trip.find(session["path"].split("/")[2].to_i)
       add_user_to_trip(@trip, current_user)
       # @trip.members << current_user
@@ -23,11 +23,10 @@ class SessionsController < Devise::SessionsController
   private
   def add_user_to_trip(trip, user)
     if !(trip.confirmed.include?(user))
-      binding.pry
       @trip.members.push(@user)
       @trip.save
       @user.save
-     end 
+     end
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

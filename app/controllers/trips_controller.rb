@@ -92,7 +92,6 @@ private
     # trips/11/
       unless signed_in?
         #if you're not signed in, check if user is a member (in database)
-        # binding.pry
         flash[:error] = "You must be logged in to access this section"
         session["path"]=request.path
         redirect_to new_user_session_path
