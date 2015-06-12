@@ -97,7 +97,7 @@ ul {
 		color: #c3c3c3;
 		width: 25px;
 	height: 25px;
-		
+
 	}
 	&:hover:before {
 			color: $orange;
@@ -235,6 +235,10 @@ ul {
 	color: #757575;
 }
 
+#dates-box li {
+	color: #757575;
+}
+
 .edit-board {
 	background-color: $dark;
 	h2 {
@@ -259,7 +263,7 @@ ul {
 		h4 a {
 			  color: #757575;
 	  	font-size: 20px;
-	  	line-height: 1.1;		
+	  	line-height: 1.1;
 	  }
 	}
 	.board-panel {
@@ -375,7 +379,7 @@ ul {
 			padding: 5px 30px;
 		}
 	}
-	
+
 //============================
 //   GOOGLE MAPS CANVAS
 //============================

@@ -22,13 +22,15 @@
 
             <!-- proposed dates -->
             <div id="dates-box">
-             <!--  <h4>Proposed Dates</h4> -->
+              <!-- <h4>Proposed Dates</h4> -->
+              <% if @trip.proposed_dates.count > 0 %>
+                <h4>Proposed Dates</h4>
+                <% @trip.proposed_dates.each do |date| %>
+                  <%# if @trip.proposed_dates.first == date %>
 
-              <% @trip.proposed_dates.each do |date| %>
-                <% if @trip.proposed_dates.first == date %>
-
-                <% else %>
-                  <li><%= date.start %>, <%= date.end %> by <%= User.find(date.user_id).name %></li>
+                  <%# else %>
+                    <li><%= date.start.strftime("%m/%d/%Y") %> to <%= date.end.strftime("%m/%d/%Y") %> by <%= User.find(date.user_id).name %></li>
+                  <%# end %>
                 <% end %>
               <% end %>
             </div>
