@@ -9,8 +9,14 @@ class LinksController < ApplicationController
     current_user.links.push(@link)
     current_user.save
     @link.save
+    # binding.pry
 
-    render nothing: true
+    @links = params["urls"]
+
+    respond_to do |f|
+      f.js
+    end
+
   end
 
 end
