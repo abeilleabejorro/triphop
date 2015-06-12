@@ -38,6 +38,10 @@ skip_before_filter :verify_authenticity_token
     # relate and save proposed_dates
     @dates = ProposedDate.create(reformat_dates)
     @dates.update(trip_id:  @trip.id)
+
+    @dates.user_id = current_user.id
+    @dates.save
+
     @trip.update(start_date: @dates.start)
     @trip.update(end_date: @dates.end)
     @trip.save
@@ -62,7 +66,7 @@ skip_before_filter :verify_authenticity_token
     else 
       flash[:notice] = "#{email} has already been invited"
     end
-   
+
   end
     redirect_to edit_trip_path(@trip)
     # add @member's email to invited array
@@ -76,7 +80,7 @@ skip_before_filter :verify_authenticity_token
       f.js
     end
      # redirect_to "/users/#{current_user.id}/trips"
-  end 
+  end
 
   def all
     @all ||= self.members
@@ -89,8 +93,8 @@ private
     def require_login
     # trips/11/
       unless signed_in?
+        binding.pry
         #if you're not signed in, check if user is a member (in database)
-        # binding.pry
         flash[:error] = "You must be logged in to access this section"
         session["path"]=request.path
         redirect_to new_user_session_path
@@ -128,7 +132,7 @@ private
         true
       end
     end
-    
+
 end
 
 

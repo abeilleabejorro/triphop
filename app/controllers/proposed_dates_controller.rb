@@ -7,13 +7,17 @@ class ProposedDatesController < ApplicationController
     @dates.user_id = current_user.id
     @dates.save
 
+    @start = @dates.start.strftime("%m/%d/%Y")
+    @end = @dates.end.strftime("%m/%d/%Y")
+    @user = current_user.name
+
     respond_to do |f|
       f.js
     end
   end
 
   def date_params
-    params.require(:proposed_dates).permit(:start, :end)
+    params.require(:proposed_date).permit(:start, :end)
   end
 
   private
