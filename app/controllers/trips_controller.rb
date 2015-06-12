@@ -93,7 +93,6 @@ private
     def require_login
     # trips/11/
       unless signed_in?
-        binding.pry
         #if you're not signed in, check if user is a member (in database)
         flash[:error] = "You must be logged in to access this section"
         session["path"]=request.path
