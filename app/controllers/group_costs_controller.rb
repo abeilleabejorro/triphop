@@ -7,6 +7,11 @@ class GroupCostsController < ApplicationController
 
     @item = @costs.item
     @price = @costs.price
+    @user = User.find(@costs.user_id)
+    @user_name = @user.name
+
+    @trip = Trip.find(@costs.trip_id)
+    @member_count = @trip.members.count
 
     respond_to do |f|
       f.js

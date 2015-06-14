@@ -62,7 +62,7 @@
 		           <i class="fa fa-spinner fa-spin fa-5x fa-align-center"></i>
               <div class="container panel">
 		          	<ul>
-							  
+
                 <form action="/trips/<%=@trip.id%>" method="POST" data-remote="true">
 		          	<ul id="friendsList">
 							  <form action="/trips/<%=@trip.id%>" method="POST">
@@ -209,19 +209,25 @@
             <div class="container">
               <div class="sub-panel">
                <em> Group Costs</em> <br>
-               <% if @trip.group_costs.count >0 %>
-                  <% @trip.group_costs.each do |cost| %>
-                    <% user = User.find(cost.user_id) %>
-                    <%= cost.item%> : $<%= cost.price %> (<%= user.name %>) <br>
-                  <%end %>
+               <div class="friend-cost-group">
+                 <% if @trip.group_costs.count >0 %>
+                      <% @trip.group_costs.each do |cost| %>
+                        <% user = User.find(cost.user_id) %>
+                        <%= cost.item%> : $<%= cost.price %> (<%= user.name %>) <br>
+                      <%end %>
 
-                  <br>
+                      <br>
+                 <% end %>
+                </div>
 
-                  <% new_costs = @trip.group_costs.collect { |cost| cost.price }  %>
-                  <% new_total = new_costs.inject(:+) %>
-                  <span style="color:black">Total Cost : <%= new_total %></span> <br>
-                  <span style="color:black">Total Per Person : <%= new_total / @trip.members.count %></span>
-                <% end %>
+                <div class="friend-cost-user">
+                 <% if @trip.group_costs.count >0 %>
+                    <% new_costs = @trip.group_costs.collect { |cost| cost.price }  %>
+                    <% new_total = new_costs.inject(:+) %>
+                    <span style="color:black">Total Cost : <span id="group-all-cost"><%= new_total %></span></span> <br>
+                    <span style="color:black">Total Per Person : <span id="group-user-cost"><%= new_total / @trip.members.count %></span></span>
+                 <% end %>
+                </div>
               </div>
             </div>
 
@@ -254,10 +260,10 @@
 </section>
 
 <!-- start of airbnb listings -->
-<section class="section-xlg container">
-  <% if @trip.links.count != 0 %>
+<section class=" container">
+  <%# if @trip.links.count != 0 %>
     <h2 class="lg-title">Accomodations</h2>
-  <% end %>
+  <%# end %>
 
  <div class="cbp-panel">
     <!-- filter -->
@@ -276,7 +282,7 @@
 
               <% arr_links = link["urls"].split(',') %>
               <% arr_links.each do |url| %>
-               
+
                 <div class="col-md-4">
                   <a href="<%= url %>" class="embedly-card"></a>
                 </div>

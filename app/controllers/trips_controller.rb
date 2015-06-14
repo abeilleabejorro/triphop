@@ -37,16 +37,24 @@ skip_before_filter :verify_authenticity_token
     current_user.trips << @trip
 
     # relate and save proposed_dates
-    @dates = ProposedDate.create(reformat_dates)
+
+    @dates = ProposedDate.new(reformat_dates)
+
     @dates.update(trip_id:  @trip.id)
 
     @dates.user_id = current_user.id
-    @dates.save
+    
+    if !@dates.save
+      flash[:alert] = @dates.errors.full_messages.to_sentence
+      redirect_to :back
+    else
+      @trip.update(start_date: @dates.start)
+      @trip.update(end_date: @dates.end)
+      @trip.save
+      redirect_to edit_trip_path(@trip)
+    end
 
-    @trip.update(start_date: @dates.start)
-    @trip.update(end_date: @dates.end)
-    @trip.save
-    redirect_to edit_trip_path(@trip)
+    
 
   end
 
