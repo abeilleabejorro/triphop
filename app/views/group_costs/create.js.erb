@@ -1,5 +1,24 @@
-var start = "<%= @start %>";
-var end = "<%= @end %>";
-var user = "<%= @user %>";
+// debugger;
+var item = "<%= @item %>";
+var price = "<%= @price %>";
+var user_name = "<%= @user_name %>";
+var member_count = "<%= @member_count %>";
 
-$('#dates-box').append($('<li>'+start+' to '+end+' by '+user+'</li>'))
+$('.friend-cost-group').find('br:last-child').remove();
+$('.friend-cost-group').append(item+' : $'+price+' ('+user_name+') <br><br>')
+
+var group_cost = parseInt($('#group-all-cost').text());
+var new_group_cost = group_cost + parseInt(price);
+var person_group_cost = new_group_cost / parseInt(member_count) ;
+
+debugger;
+
+if($('#group-all-cost').length > 0){
+  $('#group-all-cost').text(new_group_cost);
+  $('#group-user-cost').text(person_group_cost);
+} else {
+  $('.friend-cost-user').append('<span style="color:black">Total Cost : <span id="group-all-cost">'+price+'</span></span> <br>');
+  $('.friend-cost-user').append('<span style="color:black">Total Per Person : <span id="group-user-cost">'+price+'</span></span>');
+}
+
+

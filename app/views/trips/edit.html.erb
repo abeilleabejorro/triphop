@@ -209,19 +209,25 @@
             <div class="container">
               <div class="sub-panel">
                <em> Group Costs</em> <br>
-               <% if @trip.group_costs.count >0 %>
-                  <% @trip.group_costs.each do |cost| %>
-                    <% user = User.find(cost.user_id) %>
-                    <%= cost.item%> : $<%= cost.price %> (<%= user.name %>) <br>
-                  <%end %>
+               <div class="friend-cost-group">
+                 <% if @trip.group_costs.count >0 %>
+                      <% @trip.group_costs.each do |cost| %>
+                        <% user = User.find(cost.user_id) %>
+                        <%= cost.item%> : $<%= cost.price %> (<%= user.name %>) <br>
+                      <%end %>
 
-                  <br>
+                      <br>
+                 <% end %>
+                </div>
 
-                  <% new_costs = @trip.group_costs.collect { |cost| cost.price }  %>
-                  <% new_total = new_costs.inject(:+) %>
-                  <span style="color:black">Total Cost : <%= new_total %></span> <br>
-                  <span style="color:black">Total Per Person : <%= new_total / @trip.members.count %></span>
-                <% end %>
+                <div class="friend-cost-user">
+                 <% if @trip.group_costs.count >0 %>
+                    <% new_costs = @trip.group_costs.collect { |cost| cost.price }  %>
+                    <% new_total = new_costs.inject(:+) %>
+                    <span style="color:black">Total Cost : <span id="group-all-cost"><%= new_total %></span></span> <br>
+                    <span style="color:black">Total Per Person : <span id="group-user-cost"><%= new_total / @trip.members.count %></span></span>
+                 <% end %>
+                </div>
               </div>
             </div>
 
