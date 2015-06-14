@@ -1,6 +1,6 @@
 <head>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places&amp;types=(cities)"></script>
 </head>
 <section class="jumbotron whole-page new-trip">
 	<div class="container">
@@ -14,14 +14,18 @@
   </section>
   <script type="text/javascript">
 $(document).ready(function(){
+    var options = {
+    types: ['(cities)'],
+  componentRestrictions: {country: 'us'}
+    };
 
     //Autocomplete variables
     var input = document.getElementById('trip_origin');
     var input1 = document.getElementById('trip_destination');
     // var searchform = document.getElementById('form1');
     var place;
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    var autocomplete = new google.maps.places.Autocomplete(input1);
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
+    var autocomplete = new google.maps.places.Autocomplete(input1, options);
  
     //Google Map variables
     // var map;
